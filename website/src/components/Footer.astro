@@ -1,0 +1,105 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-inner">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <a href="/" class="wordmark footer-wordmark" aria-label="Prachar homepage">
+        <span class="wm-latin">Pr<span class="wm-a">a</span>char</span>
+        <span class="wm-deva" aria-hidden="true">प्रचार</span>
+      </a>
+      <p class="footer-tagline">Campaign automation built for Indian businesses.</p>
+    </div>
+
+    <!-- Nav -->
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="mailto:hello@fineintegrity.com">Contact</a>
+    </nav>
+
+    <!-- Legal -->
+    <nav class="footer-legal" aria-label="Legal">
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a>
+    </nav>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© {year} Fine Integrity. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--c-indigo-dark);
+    color: var(--c-primary-light);
+    padding-block-start: var(--s-12);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-8);
+    padding-block-end: var(--s-10);
+  }
+  @media (min-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr 1fr 1fr; align-items: start; }
+  }
+
+  /* ---- Wordmark (light on dark) ---- */
+  .footer-wordmark { display: flex; flex-direction: column; line-height: 1; }
+  .wm-latin  { font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -.5px; }
+  .wm-a      { position: relative; display: inline-block; }
+  .wm-a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 3px;
+    background: var(--c-primary);
+    border-radius: 2px;
+  }
+  .wm-deva   { font-size: 9px; color: var(--c-primary-light); letter-spacing: .5px; margin-top: 2px; }
+
+  .footer-brand { display: flex; flex-direction: column; gap: var(--s-3); }
+  .footer-tagline { font-size: .875rem; color: rgba(255,255,255,.5); max-width: 200px; line-height: 1.5; }
+
+  /* ---- Nav links ---- */
+  .footer-nav,
+  .footer-legal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  .footer-nav a,
+  .footer-legal a {
+    font-size: .9375rem;
+    color: rgba(255,255,255,.6);
+    transition: color .15s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+  }
+  .footer-nav a:hover,
+  .footer-legal a:hover { color: #fff; }
+  .footer-nav a:focus-visible,
+  .footer-legal a:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 3px; border-radius: 3px; }
+
+  /* ---- Bottom bar ---- */
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-block: var(--s-4);
+  }
+  .footer-bottom p {
+    font-size: .8125rem;
+    color: rgba(255,255,255,.35);
+  }
+</style>

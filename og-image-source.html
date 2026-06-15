@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--
+  OG IMAGE SOURCE — Prachar
+  ─────────────────────────────────────────────────────────────
+  How to generate og-image.jpg from this file:
+
+  OPTION A — Chrome DevTools (easiest):
+    1. Open this file in Chrome: File → Open File → og-image-source.html
+    2. Open DevTools (F12) → click the device toolbar icon (Ctrl+Shift+M)
+    3. Set width = 1200, height = 630 (type in the dimension boxes)
+    4. Press Ctrl+Shift+P → type "Capture screenshot" → select it
+    5. Save the file as og-image.jpg into this same folder (public/)
+
+  OPTION B — Online tool:
+    1. Copy the full URL of this file when opened in Chrome
+    2. Paste into https://htmlcsstoimage.com or similar
+    3. Set dimensions 1200 × 630 → download as JPEG
+
+  OPTION C — Node.js script (advanced):
+    Run: node generate-og.mjs  (see generate-og.mjs in this folder)
+
+  TARGET: ≤ 200 KB file size for the saved JPEG.
+  ─────────────────────────────────────────────────────────────
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <title>Prachar OG Image</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #1E1B4B;
+      position: relative;
+    }
+
+    /* Indigo gradient background */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(150deg, #1E1B4B 0%, #2D2580 55%, #4338CA 100%);
+    }
+
+    /* Warm saffron glow top-right */
+    .glow {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(249,115,22,.45) 0%, transparent 65%);
+    }
+
+    /* Left accent bar */
+    .accent-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      background: linear-gradient(180deg, #F97316 0%, #EA580C 100%);
+    }
+
+    /* Content container */
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 56px 72px 56px 80px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    /* Left column */
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Wordmark */
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .wm-latin {
+      font-size: 36px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .wm-accent {
+      display: inline-block;
+      border-bottom: 4px solid #F97316;
+      padding-bottom: 1px;
+    }
+    .wm-deva {
+      font-size: 13px;
+      color: #FED7AA;
+      letter-spacing: 0.5px;
+    }
+
+    /* Eyebrow tag */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(249,115,22,.18);
+      border: 1px solid rgba(249,115,22,.45);
+      color: #FBBF24;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 99px;
+      width: fit-content;
+    }
+
+    /* Main headline */
+    .headline {
+      font-size: 52px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -2px;
+      line-height: 1.1;
+    }
+    .headline em {
+      font-style: normal;
+      color: #F97316;
+    }
+
+    /* Value props */
+    .props {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .prop {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      color: #FED7AA;
+      font-weight: 500;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #16A34A;
+      flex-shrink: 0;
+    }
+
+    /* Price badge */
+    .price-badge {
+      display: inline-flex;
+      flex-direction: column;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px;
+      padding: 14px 24px;
+      width: fit-content;
+    }
+    .price-badge .from { font-size: 12px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; }
+    .price-badge .price { font-size: 28px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; line-height: 1.1; }
+    .price-badge .price span { font-size: 14px; font-weight: 400; color: rgba(255,255,255,.6); }
+
+    /* Right column — WhatsApp preview card */
+    .right {
+      width: 320px;
+      flex-shrink: 0;
+    }
+
+    .wa-preview {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .wa-header-img {
+      background: linear-gradient(135deg, #1a0533 0%, #2D1570 50%, #4A1055 100%);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .wa-diyas { font-size: 28px; margin-bottom: 8px; }
+    .wa-hindi { color: #FED7AA; font-size: 15px; font-weight: 700; }
+
+    .wa-msg-body { padding: 16px 20px; border-bottom: 1px solid #E8E0F7; }
+    .wa-msg-title { font-size: 14px; font-weight: 700; color: #1E1B4B; margin-bottom: 6px; }
+    .wa-msg-text  { font-size: 12px; color: #6B6B8A; line-height: 1.5; }
+
+    .wa-cta-row   { padding: 10px 20px; border-bottom: 1px solid #E8E0F7; text-align: center; }
+    .wa-cta-btn   { color: #128C7E; font-size: 13px; font-weight: 600; }
+
+    .wa-stop  { padding: 6px 20px; font-size: 10px; color: #6B6B8A; text-align: center; background: #f5f5f5; }
+    .wa-badge { padding: 7px 20px; font-size: 11px; font-weight: 600; color: #F97316; text-align: center; background: rgba(249,115,22,.07); }
+
+    /* Bottom tagline */
+    .bottom-line {
+      position: absolute;
+      bottom: 32px;
+      left: 80px;
+      font-size: 13px;
+      color: rgba(255,255,255,.35);
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="glow"></div>
+  <div class="accent-bar"></div>
+
+  <div class="content">
+    <!-- Left column -->
+    <div class="left">
+      <div class="wordmark">
+        <div class="wm-latin">Pr<span class="wm-accent">a</span>char</div>
+        <div class="wm-deva">प्रचार</div>
+      </div>
+
+      <div class="eyebrow">🎉 Festival Campaign Automation</div>
+
+      <h1 class="headline">
+        Festival campaigns<br />
+        in <em>5 minutes</em>.
+      </h1>
+
+      <div class="props">
+        <div class="prop"><span class="dot"></span>Describe in English or Hindi — AI generates in 15 seconds</div>
+        <div class="prop"><span class="dot"></span>WhatsApp + Email from one platform</div>
+        <div class="prop"><span class="dot"></span>Free trial — no credit card required</div>
+      </div>
+
+      <div class="price-badge">
+        <span class="from">Starting from</span>
+        <span class="price">₹999 <span>/ month per Branch</span></span>
+      </div>
+    </div>
+
+    <!-- Right column — WhatsApp card mockup -->
+    <div class="right">
+      <div class="wa-preview">
+        <div class="wa-header-img">
+          <div class="wa-diyas">🪔 🪔 🪔</div>
+          <div class="wa-hindi">दीपावली की शुभकामनाएं</div>
+        </div>
+        <div class="wa-msg-body">
+          <div class="wa-msg-title">🎉 Diwali Special — 30% Off All Sarees</div>
+          <div class="wa-msg-text">Valid till 2 Nov 2026 · Shree Ladies Garments, Pune</div>
+        </div>
+        <div class="wa-cta-row"><span class="wa-cta-btn">Shop Now →</span></div>
+        <div class="wa-stop">Reply STOP to unsubscribe</div>
+        <div class="wa-badge">✨ Generated by Prachar in 11 seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-line">fineintegrity.com · Built for Indian businesses</div>
+</body>
+</html>

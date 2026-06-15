@@ -1,0 +1,164 @@
+/* ============================================================
+   PRACHAR — Design System · global.css
+   Tokens, reset, shared utilities
+   ============================================================ */
+
+:root {
+  /* Colors */
+  --c-primary:       #F97316;
+  --c-primary-light: #FED7AA;
+  --c-primary-deep:  #EA580C;
+  --c-amber:         #FBBF24;
+  --c-indigo-dark:   #1E1B4B;
+  --c-indigo-mid:    #312E81;
+  --c-indigo-soft:   #4338CA;
+  --c-bg:            #FFF8F1;
+  --c-surface:       #FFFFFF;
+  --c-muted:         #6B6B8A;
+  --c-border:        #E8E0F7;
+  --c-success:       #16A34A;
+  --c-canvas:        #EAEAF0;
+
+  /* Typography */
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Radii */
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-pill: 99px;
+
+  /* Spacing — 4px base unit */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+
+  /* Elevation */
+  --sh-1: 0 1px 4px rgba(30,27,75,.08);
+  --sh-2: 0 2px 8px rgba(30,27,75,.10);
+  --sh-3: 0 8px 32px rgba(30,27,75,.18);
+  --sh-4: 0 4px 20px rgba(249,115,22,.45);
+  --sh-5: 0 2px 12px rgba(30,27,75,.25);
+
+  /* Layout */
+  --max-w:    1200px;
+  --header-h: 64px;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body  {
+  font-family: var(--font);
+  line-height: 1.65;
+  color: var(--c-indigo-dark);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg, video, canvas { display: block; max-width: 100%; }
+p, h1, h2, h3, h4       { overflow-wrap: break-word; }
+a                        { color: inherit; text-decoration: none; }
+ul, ol                   { list-style: none; }
+button                   { font-family: var(--font); cursor: pointer; border: none; background: none; }
+
+/* All anchored sections clear the sticky header */
+[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+@media (min-width: 768px)  { .container { padding-inline: 32px; } }
+@media (min-width: 1024px) { .container { padding-inline: 48px; } }
+
+.section           { padding-block: var(--s-12); }
+.section--canvas   { background: var(--c-canvas); }
+@media (min-width: 768px) { .section { padding-block: var(--s-20); } }
+
+/* ---- Shared component styles ---- */
+
+/* Eyebrow tag */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(249,115,22,.15);
+  border: 1px solid rgba(249,115,22,.4);
+  color: var(--c-amber);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border-radius: var(--r-pill);
+}
+
+/* Section headings */
+.section-headline {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--c-indigo-dark);
+  letter-spacing: -.25px;
+  line-height: 1.2;
+}
+.section-sub {
+  font-size: 1rem;
+  color: var(--c-muted);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+/* Primary CTA button */
+.btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 12px 28px;
+  background: var(--c-primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-4);
+  transition: background .15s ease, box-shadow .15s ease;
+  min-height: 44px;
+  min-width: 44px;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+.btn:hover       { background: var(--c-primary-deep); box-shadow: 0 6px 24px rgba(234,88,12,.5); }
+.btn:focus-visible { outline: 3px solid var(--c-primary); outline-offset: 3px; }
+.btn:active      { transform: translateY(1px); }
+.btn-sub         { font-size: 11px; font-weight: 400; color: var(--c-primary-light); line-height: 1; }
+
+/* Trust row */
+.trust-row  { display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center; }
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: .875rem; color: var(--c-muted); }
+.trust-dot  { width: 7px; height: 7px; border-radius: 50%; background: var(--c-success); flex-shrink: 0; }
+
+/* Accessibility */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+}

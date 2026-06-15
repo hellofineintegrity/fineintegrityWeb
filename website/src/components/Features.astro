@@ -1,0 +1,171 @@
+---
+const features = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/><path d="M19.5 2l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6z" opacity=".7"/></svg>`,
+    title: 'AI writes it for you',
+    body:  'Describe your offer once. Get a designed, branded campaign in under 15 seconds. No copywriter. No designer. No agency.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="12" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/></svg>`,
+    title: 'Built for Indian festivals',
+    body:  'Diwali, Navratri, Eid, Holi, and 15+ festivals built in. The right tone, imagery, and timing — automatically.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 7 10-7"/></svg>`,
+    title: 'WhatsApp + Email, one platform',
+    body:  'Send on both channels and track delivery, read rates, and clicks from a single dashboard. No stitching two tools together.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.5-3.5 8-7 9-3.5-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    title: 'Approval before it goes out',
+    body:  'Executives draft. Admins approve. Nothing reaches your customers without sign-off. Full audit trail included.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"/><rect x="10" y="8" width="4" height="13" rx="1"/><rect x="17" y="5" width="4" height="16" rx="1"/></svg>`,
+    title: 'Know what\'s working',
+    body:  'Per-campaign delivery, read rates, and click tracking. Export to CSV. Compare this Diwali campaign against last year\'s.',
+  },
+];
+
+const industries = [
+  'Salons & Beauty', 'Garments & Fashion', 'Automotive Services',
+  'Grocery & Supermarkets', 'Restaurants & Food', 'Jewellery',
+  'Education & Coaching', 'Travel & Tours', 'Bakeries', 'Home Services',
+];
+---
+
+<section id="features" class="section" aria-labelledby="features-heading">
+  <div class="container">
+
+    <div class="feat-header">
+      <span class="eyebrow">Features</span>
+      <h2 id="features-heading" class="section-headline">
+        Everything you need to run professional campaigns.
+      </h2>
+      <p class="section-sub">
+        No design skills. No marketing degree. Just describe what you're selling.
+      </p>
+    </div>
+
+    <ul class="feat-grid" aria-label="Prachar features">
+      {features.map(f => (
+        <li class="feat-card">
+          <div class="feat-icon" aria-hidden="true" set:html={f.icon}></div>
+          <h3 class="feat-title">{f.title}</h3>
+          <p class="feat-body">{f.body}</p>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Industry callout -->
+    <div class="industry-callout" aria-label="Supported industries">
+      <p class="ind-label">Used by businesses in</p>
+      <ul class="ind-list" aria-label="Industry list">
+        {industries.map(ind => (
+          <li class="ind-chip">{ind}</li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .feat-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    margin-bottom: var(--s-10);
+  }
+
+  .feat-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+  @media (min-width: 540px) {
+    .feat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .feat-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .feat-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: var(--s-6);
+    box-shadow: var(--sh-1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+  .feat-card:hover {
+    box-shadow: var(--sh-2);
+    border-color: rgba(249,115,22,.35);
+  }
+
+  .feat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-deep) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .feat-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--c-indigo-dark);
+    line-height: 1.3;
+  }
+
+  .feat-body {
+    font-size: .9375rem;
+    color: var(--c-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  /* ---- Industry callout ---- */
+  .industry-callout {
+    margin-top: var(--s-12);
+    padding: var(--s-8);
+    background: var(--c-canvas);
+    border-radius: var(--r-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    align-items: flex-start;
+  }
+
+  .ind-label {
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--c-indigo-dark);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+  }
+
+  .ind-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+
+  .ind-chip {
+    padding: 5px 12px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-pill);
+    font-size: .8125rem;
+    font-weight: 500;
+    color: var(--c-indigo-dark);
+    white-space: nowrap;
+  }
+</style>

@@ -1,0 +1,325 @@
+---
+const REG = 'https://app.fineintegrity.com/register';
+const utmBase = 'utm_source=website&utm_medium=pricing&utm_campaign=free-trial';
+
+const tiers = [
+  {
+    name:       'Free Trial',
+    price:      '₹0',
+    period:     '1 month',
+    highlight:  false,
+    badge:      null,
+    features:   [
+      '500 WhatsApp messages',
+      '2,000 emails',
+      'Up to 5 Campaigns',
+      'All features unlocked',
+    ],
+    overage:    null,
+    cta:        'Start Free Trial',
+    content:    'free-trial',
+  },
+  {
+    name:       'Starter',
+    price:      '₹999',
+    period:     'per month',
+    highlight:  false,
+    badge:      null,
+    features:   [
+      '500 WhatsApp messages',
+      '2,000 emails',
+      'All features included',
+      'Overage: ₹1.50/WhatsApp msg',
+      'Overage: ₹0.25/email',
+    ],
+    overage:    true,
+    cta:        'Start Free Trial',
+    content:    'starter',
+  },
+  {
+    name:       'Growth',
+    price:      '₹1,999',
+    period:     'per month',
+    highlight:  true,
+    badge:      'Most Popular',
+    features:   [
+      '1,500 WhatsApp messages',
+      '6,000 emails',
+      'All features included',
+      'Overage: ₹1.25/WhatsApp msg',
+      'Overage: ₹0.20/email',
+    ],
+    overage:    true,
+    cta:        'Start Free Trial',
+    content:    'growth',
+  },
+  {
+    name:       'Business',
+    price:      '₹3,499',
+    period:     'per month',
+    highlight:  false,
+    badge:      null,
+    features:   [
+      '3,500 WhatsApp messages',
+      '15,000 emails',
+      'All features included',
+      'Overage: ₹1.00/WhatsApp msg',
+      'Overage: ₹0.15/email',
+    ],
+    overage:    true,
+    cta:        'Start Free Trial',
+    content:    'business',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is the free trial really free?',
+    a: 'Yes. The free trial gives you 1 full month, all features unlocked, and up to 5 Campaigns per Branch — at ₹0. No credit card required to start.',
+  },
+  {
+    q: 'What is a "Branch"?',
+    a: 'A Branch is a location or unit within your business — for example, "AutoCare Pune" or "AutoCare Mumbai". Each Branch has its own WhatsApp number, customer list, and billing. Branches share templates and brand assets.',
+  },
+  {
+    q: 'What payment methods are accepted?',
+    a: 'We accept UPI and credit/debit cards. More payment options coming soon.',
+  },
+  {
+    q: 'Are WhatsApp message costs included?',
+    a: 'Your Prachar plan includes a WhatsApp message quota. Meta charges separately for WhatsApp marketing messages at the India tier rate (approximately ₹1.00–1.25 per conversation). Plan overage rates apply beyond your included quota.',
+  },
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Yes. Cancel at any time from your Branch settings. There are no long-term contracts. Your account remains active until the end of the current billing period.',
+  },
+];
+---
+
+<section id="pricing" class="section pricing-section" aria-labelledby="pricing-heading">
+  <div class="container">
+
+    <div class="pricing-header">
+      <span class="eyebrow">Pricing</span>
+      <h2 id="pricing-heading" class="section-headline">Simple pricing. No surprises.</h2>
+      <p class="section-sub">Start free for 1 month. No credit card required.</p>
+    </div>
+
+    <!-- Pricing cards -->
+    <ul class="pricing-grid" aria-label="Pricing tiers">
+      {tiers.map(t => (
+        <li class:list={['pricing-card', { 'pricing-card--featured': t.highlight }]}>
+          {t.badge && (
+            <div class="popular-badge" aria-label="Most popular plan">{t.badge}</div>
+          )}
+
+          <div class="tier-name">{t.name}</div>
+
+          <div class="tier-price-row">
+            <span class="tier-price">{t.price}</span>
+            <span class="tier-period">/ {t.period}</span>
+          </div>
+
+          <ul class="tier-features" aria-label={`${t.name} features`}>
+            {t.features.map(f => (
+              <li class="tier-feat">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={`${REG}?${utmBase}&utm_content=${t.content}`}
+            class="btn tier-btn"
+            data-cta
+            data-cta-location="pricing"
+            data-cta-tier={t.content}
+          >
+            {t.cta}
+            <span class="btn-sub">No Credit Card Required</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- FAQ accordion -->
+    <div class="faq-wrap" aria-labelledby="faq-heading">
+      <h3 id="faq-heading" class="faq-title">Frequently asked questions</h3>
+
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details class="faq-item">
+            <summary class="faq-q">
+              {f.q}
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-a">
+              <p>{f.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pricing-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    margin-bottom: var(--s-10);
+    text-align: center;
+    align-items: center;
+  }
+
+  /* ---- Pricing grid ---- */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+  @media (min-width: 540px) {
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .pricing-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ---- Pricing card ---- */
+  .pricing-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: var(--s-6);
+    box-shadow: var(--sh-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+    position: relative;
+  }
+
+  .pricing-card--featured {
+    border: 3px solid var(--c-indigo-dark);
+    box-shadow: var(--sh-3);
+    padding-top: calc(var(--s-6) + 4px);
+  }
+
+  /* ---- Most Popular badge ---- */
+  .popular-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--c-primary);
+    color: #fff;
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: var(--r-pill);
+    white-space: nowrap;
+  }
+
+  .tier-name {
+    font-size: .875rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--c-muted);
+  }
+
+  .tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .tier-price  { font-size: 2rem; font-weight: 800; color: var(--c-indigo-dark); letter-spacing: -1px; }
+  .tier-period { font-size: .8125rem; color: var(--c-muted); }
+
+  .tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .tier-feat {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: .875rem;
+    color: var(--c-muted);
+    line-height: 1.4;
+  }
+  .tier-feat svg {
+    color: var(--c-success);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tier-btn { width: 100%; font-size: .9375rem; }
+
+  /* ---- FAQ ---- */
+  .faq-wrap {
+    margin-top: var(--s-16);
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .faq-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--c-indigo-dark);
+    margin-bottom: var(--s-6);
+    text-align: center;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--c-border);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--s-4) 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--c-indigo-dark);
+    cursor: pointer;
+    list-style: none;
+    gap: var(--s-4);
+    min-height: 44px;
+    user-select: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; border-radius: 4px; }
+
+  .faq-icon {
+    font-size: 1.25rem;
+    color: var(--c-muted);
+    flex-shrink: 0;
+    line-height: 1;
+    font-weight: 300;
+    font-style: normal;
+  }
+  .faq-icon::before           { content: '+'; }
+  details[open] .faq-icon::before { content: '−'; }
+
+  .faq-a {
+    padding-bottom: var(--s-4);
+    color: var(--c-muted);
+    font-size: .9375rem;
+    line-height: 1.65;
+  }
+</style>

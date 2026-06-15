@@ -1,0 +1,150 @@
+---
+const REG   = 'https://app.fineintegrity.com/register';
+const howCTA = `${REG}?utm_source=website&utm_medium=how-it-works&utm_campaign=free-trial`;
+
+const steps = [
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+    num:  '01',
+    heading: 'Describe your offer',
+    body: 'Type your promotion in plain English or Hindi. Select a festival or season for context — or skip it.',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z" opacity=".9"/><path d="M19 3l.7 2L21 5l-2 .7L19 7l-.7-2L17 5l2-.7z"/><path d="M5 18l.5 1.5 1.5.5-1.5.5L5 22l-.5-1.5L3 20l1.5-.5z" opacity=".6"/></svg>`,
+    num:  '02',
+    heading: 'AI generates your campaign',
+    body: 'Get a professional, graphics-rich WhatsApp or email campaign — with your brand logo, colors, and copy — in under 15 seconds.',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>`,
+    num:  '03',
+    heading: 'Approve and send',
+    body: 'Review, get team sign-off, and publish to your customer list on WhatsApp or email — at the time that works best.',
+  },
+];
+---
+
+<section id="how-it-works" class="section section--canvas" aria-labelledby="hiw-heading">
+  <div class="container">
+
+    <div class="hiw-header">
+      <span class="eyebrow">How It Works</span>
+      <h2 id="hiw-heading" class="section-headline">Three steps. First campaign in minutes.</h2>
+    </div>
+
+    <ol class="hiw-steps" aria-label="How Prachar works">
+      {steps.map((s, i) => (
+        <li class="hiw-step">
+          <div class="step-icon" aria-hidden="true" set:html={s.icon}></div>
+          <div class="step-num" aria-hidden="true">{s.num}</div>
+          <h3 class="step-heading">{s.heading}</h3>
+          <p class="step-body">{s.body}</p>
+          {i < steps.length - 1 && (
+            <div class="step-arrow" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    <div class="hiw-cta">
+      <a
+        href={howCTA}
+        class="btn"
+        data-cta
+        data-cta-location="how-it-works"
+      >
+        Start Free Trial
+        <span class="btn-sub">No Credit Card Required</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hiw-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    margin-bottom: var(--s-10);
+    text-align: center;
+    align-items: center;
+  }
+
+  .hiw-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-8);
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .hiw-steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+    }
+  }
+
+  .hiw-step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    position: relative;
+  }
+
+  .step-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-deep) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .step-num {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--c-primary);
+    text-transform: uppercase;
+  }
+
+  .step-heading {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--c-indigo-dark);
+    line-height: 1.3;
+  }
+
+  .step-body {
+    font-size: .9375rem;
+    color: var(--c-muted);
+    line-height: 1.65;
+  }
+
+  /* Connector arrow — desktop only, absolutely positioned */
+  .step-arrow {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .step-arrow {
+      display: flex;
+      position: absolute;
+      top: 14px;
+      right: calc(-1 * var(--s-6) / 2 - 12px);
+      color: var(--c-border);
+    }
+  }
+
+  .hiw-cta {
+    margin-top: var(--s-10);
+    display: flex;
+    justify-content: center;
+  }
+</style>

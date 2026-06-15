@@ -1,0 +1,365 @@
+---
+const REG = 'https://app.fineintegrity.com/register';
+const headerCTA = `${REG}?utm_source=website&utm_medium=header&utm_campaign=free-trial`;
+const drawerCTA = `${REG}?utm_source=website&utm_medium=mobile-nav&utm_campaign=free-trial`;
+---
+
+<header class="site-header" role="banner">
+  <div class="container hdr-inner">
+
+    <!-- Wordmark -->
+    <a href="/" class="wordmark" aria-label="Prachar – go to homepage">
+      <span class="wm-latin">Pr<span class="wm-a">a</span>char</span>
+      <span class="wm-deva" aria-hidden="true">प्रचार</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hdr-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <!-- Desktop: language selector + CTA -->
+    <div class="hdr-right">
+      <div class="lang-wrap">
+        <button
+          id="lang-btn"
+          class="lang-trigger"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Select language"
+        >
+          <!-- Globe -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
+          </svg>
+          <span>EN</span>
+          <!-- Chevron -->
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div id="lang-drop" class="lang-drop" role="listbox" aria-label="Language options">
+          <div class="lang-opt lang-active" role="option" aria-selected="true">
+            English
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="lang-opt lang-disabled" role="option" aria-selected="false" aria-disabled="true">
+            हिन्दी <span class="lang-soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <a
+        href={headerCTA}
+        class="btn btn-compact"
+        data-cta
+        data-cta-location="header"
+      >Start Free Trial</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      class="hamburger"
+      aria-expanded="false"
+      aria-controls="nav-overlay"
+      aria-label="Open navigation"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay (full-screen, click outside panel to close) -->
+<div id="nav-overlay" class="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <!-- Wordmark in drawer -->
+      <a href="/" class="wordmark wm-dark" aria-label="Prachar – go to homepage">
+        <span class="wm-latin">Pr<span class="wm-a">a</span>char</span>
+        <span class="wm-deva" aria-hidden="true">प्रचार</span>
+      </a>
+      <button id="close-nav" class="close-nav" aria-label="Close navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="drawer-nav" aria-label="Mobile">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <a
+      href={drawerCTA}
+      class="btn drawer-cta"
+      data-cta
+      data-cta-location="mobile-nav"
+    >
+      Start Free Trial
+      <span class="btn-sub">No Credit Card Required</span>
+    </a>
+
+    <div class="drawer-lang">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
+      </svg>
+      English (active)&ensp;·&ensp;<span class="dl-soon">हिन्दी — Coming Soon</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ---- Sticky header ---- */
+  .site-header {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: var(--header-h);
+    background: var(--c-indigo-dark);
+    border-bottom: 2px solid var(--c-primary);
+    z-index: 100;
+    box-shadow: var(--sh-5);
+  }
+
+  .hdr-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+  }
+
+  /* ---- Wordmark ---- */
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .wm-latin {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -.5px;
+  }
+  .wm-a {
+    position: relative;
+    display: inline-block;
+  }
+  .wm-a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -2px;
+    height: 3px;
+    background: var(--c-primary);
+    border-radius: 2px;
+  }
+  .wm-deva {
+    font-size: 9px;
+    color: var(--c-primary-light);
+    letter-spacing: .5px;
+    margin-top: 2px;
+  }
+  .wm-dark .wm-latin { color: var(--c-indigo-dark); }
+  .wm-dark .wm-deva  { color: var(--c-primary); }
+
+  /* ---- Desktop nav ---- */
+  .hdr-nav {
+    display: none;
+    gap: var(--s-6);
+    align-items: center;
+  }
+  .hdr-nav a {
+    color: var(--c-primary-light);
+    font-size: .9375rem;
+    font-weight: 500;
+    transition: color .15s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .hdr-nav a:hover { color: #fff; }
+
+  /* ---- Desktop right actions ---- */
+  .hdr-right {
+    display: none;
+    align-items: center;
+    gap: var(--s-4);
+  }
+
+  /* ---- Language selector ---- */
+  .lang-wrap    { position: relative; }
+  .lang-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--c-primary-light);
+    font-size: .875rem;
+    font-weight: 500;
+    padding: 6px 8px;
+    border-radius: var(--r-sm);
+    transition: color .15s;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .lang-trigger:hover { color: #fff; }
+  .lang-trigger:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+
+  .lang-drop {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 160px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-2);
+    padding: var(--s-2);
+    display: none;
+    z-index: 10;
+  }
+  .lang-drop.open { display: block; }
+
+  .lang-opt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: var(--r-sm);
+    font-size: .875rem;
+    cursor: default;
+    color: var(--c-indigo-dark);
+  }
+  .lang-active  { font-weight: 600; color: var(--c-indigo-dark); }
+  .lang-active svg { color: var(--c-primary); }
+  .lang-disabled { color: var(--c-muted); cursor: not-allowed; }
+  .lang-soon { font-size: .75rem; color: var(--c-muted); }
+
+  /* ---- Compact CTA (header) ---- */
+  .btn-compact { padding: 8px 16px; font-size: .875rem; }
+
+  /* ---- Hamburger ---- */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    border-radius: var(--r-sm);
+    flex-shrink: 0;
+  }
+  .hamburger:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+  .bar {
+    width: 22px;
+    height: 2px;
+    background: var(--c-primary-light);
+    border-radius: 2px;
+    transition: background .15s;
+  }
+  .hamburger:hover .bar { background: #fff; }
+
+  /* ---- Mobile nav overlay ---- */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30,27,75,.6);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(80vw, 320px);
+    background: var(--c-surface);
+    padding: var(--s-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+    transform: translateX(100%);
+    transition: transform .25s ease;
+    overflow-y: auto;
+  }
+  .nav-overlay.open .nav-panel {
+    transform: translateX(0);
+  }
+
+  .nav-panel-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .close-nav {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-sm);
+    color: var(--c-muted);
+    transition: color .15s;
+  }
+  .close-nav:hover        { color: var(--c-indigo-dark); }
+  .close-nav:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+  .drawer-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--c-indigo-dark);
+    border-bottom: 1px solid var(--c-border);
+    min-height: 44px;
+    transition: color .15s;
+  }
+  .drawer-nav a:hover { color: var(--c-primary); }
+
+  .drawer-cta { width: 100%; }
+
+  .drawer-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .8125rem;
+    color: var(--c-muted);
+    margin-top: auto;
+  }
+  .dl-soon { color: var(--c-muted); }
+
+  /* ---- Responsive: show desktop elements ---- */
+  @media (min-width: 768px) {
+    .hdr-nav, .hdr-right { display: flex; }
+    .hamburger            { display: none; }
+    .nav-overlay          { display: none; }
+  }
+</style>

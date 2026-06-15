@@ -1,0 +1,97 @@
+---
+// Replace with real testimonials once pilot businesses grant written permission.
+// Current: industry/city callout (always-available fallback per EXPERIENCE.md §4.6).
+---
+
+<section class="section section--canvas proof-section" aria-labelledby="proof-heading">
+  <div class="container">
+
+    <div class="proof-inner">
+      <span class="eyebrow">Trusted by Indian Businesses</span>
+
+      <h2 id="proof-heading" class="section-headline">
+        Built for businesses like yours — across Maharashtra.
+      </h2>
+
+      <p class="section-sub proof-sub">
+        Automotive services, garments shops, and grocery businesses are using Prachar
+        to run professional WhatsApp and email promotions this festival season.
+      </p>
+
+      <div class="proof-stats" aria-label="Platform highlights">
+        <div class="stat">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Indian festivals built in</span>
+        </div>
+        <div class="stat-div" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">&lt;15s</span>
+          <span class="stat-label">Campaign generated</span>
+        </div>
+        <div class="stat-div" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">₹0</span>
+          <span class="stat-label">To start — 1 month free</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .proof-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+    align-items: flex-start;
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    align-items: center;
+  }
+
+  .proof-sub { text-align: center; }
+
+  .proof-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-6);
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--s-4);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--c-primary);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: .8125rem;
+    color: var(--c-muted);
+    font-weight: 500;
+    text-align: center;
+    max-width: 100px;
+  }
+
+  .stat-div {
+    width: 1px;
+    height: 40px;
+    background: var(--c-border);
+    display: none;
+  }
+  @media (min-width: 480px) {
+    .stat-div { display: block; }
+  }
+</style>

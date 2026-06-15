@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header     from '../components/Header.astro';
+import Footer     from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy — Prachar"
+  description="How Fine Integrity collects, uses, and protects personal data on the Prachar platform."
+  canonical={Astro.url.href}
+>
+  <Header />
+  <main class="legal-page">
+    <div class="container legal-inner">
+      <h1>Privacy Policy</h1>
+      <p class="legal-updated">Last updated: June 2026 &nbsp;·&nbsp; Effective: June 2026</p>
+
+      <!-- TODO: Have this policy reviewed by a lawyer familiar with the
+           Digital Personal Data Protection Act 2023 (DPDP), IT Act 2000,
+           and applicable TRAI guidelines before public launch. -->
+
+      <section>
+        <h2>1. Who we are — Data Fiduciary</h2>
+        <p>Prachar is a product of <strong>Fine Integrity</strong>, a company registered in India with its principal office in Pune, Maharashtra. In the context of this policy, "Fine Integrity", "we", "us", or "our" refers to the entity operating the Prachar platform at <a href="https://www.fineintegrity.com">www.fineintegrity.com</a> and <a href="https://app.fineintegrity.com">app.fineintegrity.com</a>.</p>
+        <p>Fine Integrity is the <strong>Data Fiduciary</strong> within the meaning of the Digital Personal Data Protection Act 2023 (DPDP Act) in respect of personal data of merchant account holders ("Subscribers") and visitors to our marketing website.</p>
+        <p>Where a Subscriber uploads personal data of their own customers (such as phone numbers and email addresses for sending campaigns), Fine Integrity processes that data solely on the Subscriber's instructions and acts as a <strong>Data Processor</strong>. The Subscriber is the Data Fiduciary for their end-customer data and is responsible for having obtained valid consent from those individuals before uploading their data to Prachar.</p>
+      </section>
+
+      <section>
+        <h2>2. Personal data we collect</h2>
+        <p><strong>When you visit our marketing website (fineintegrity.com):</strong></p>
+        <ul>
+          <li>Anonymised analytics data — pages viewed, session duration, referral source, device/browser type — via Google Analytics 4 (GA4). GA4 cookies and identifiers are set in your browser.</li>
+          <li>If you contact us by email, the email address and content you provide.</li>
+        </ul>
+        <p><strong>When you register and use the Prachar platform (app.fineintegrity.com):</strong></p>
+        <ul>
+          <li><em>Account data:</em> business name, branch name, owner/admin name, email address, mobile number, industry category.</li>
+          <li><em>Billing data:</em> billing address, GST number (if applicable). Payment card or UPI details are processed directly by our payment processor and are not stored on our servers.</li>
+          <li><em>Campaign data:</em> offer descriptions, AI-generated promotional text, approved WhatsApp templates, scheduled send times, recipient lists you upload.</li>
+          <li><em>Usage and performance data:</em> campaign delivery status, open/click rates, approval logs, login timestamps, and feature interaction events.</li>
+          <li><em>End-customer data uploaded by you:</em> phone numbers and/or email addresses of your customers whom you choose to include in campaigns. You are solely responsible for ensuring consent for those individuals.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Why we use your data — Purposes and lawful bases</h2>
+        <ul>
+          <li><strong>Providing the service:</strong> Creating and managing your account, generating AI campaign content, sending WhatsApp and email campaigns, delivering approval notifications. <em>Basis: contract performance.</em></li>
+          <li><strong>Billing and payments:</strong> Invoicing, processing subscription fees and overage charges, maintaining payment records. <em>Basis: contract performance and legal obligation.</em></li>
+          <li><strong>Platform improvements:</strong> Analysing aggregated usage patterns to improve AI output quality, reliability, and new features. <em>Basis: legitimate interest (aggregated, de-identified data only).</em></li>
+          <li><strong>Customer support:</strong> Responding to your queries and resolving disputes. <em>Basis: contract performance and legitimate interest.</em></li>
+          <li><strong>Legal compliance:</strong> Meeting obligations under the DPDP Act, IT Act, TRAI regulations, and as required by a competent authority. <em>Basis: legal obligation.</em></li>
+          <li><strong>Marketing communications to Subscribers:</strong> Sending product updates and promotional emails where you have opted in or where permitted under applicable law. <em>Basis: consent / legitimate interest. You may opt out at any time.</em></li>
+          <li><strong>Website analytics:</strong> Understanding how visitors use fineintegrity.com to improve marketing and onboarding flows. <em>Basis: legitimate interest (aggregated analytics).</em></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Third parties we share data with</h2>
+        <p>We do not sell or rent your personal data. We share data only with the following service providers who process it on our behalf:</p>
+        <ul>
+          <li><strong>Microsoft Azure (Central India region):</strong> Cloud infrastructure, storage, and compute. All Subscriber and campaign data remains within Azure's Central India data centre.</li>
+          <li><strong>Meta Platforms (WhatsApp Business API):</strong> To deliver WhatsApp campaign messages to your customers' phone numbers. Meta's usage is governed by their Data Processing Terms and WhatsApp Business Policy.</li>
+          <li><strong>Email delivery provider:</strong> To send email campaigns to your customers' email addresses and to send transactional emails (approvals, billing receipts) to you.</li>
+          <li><strong>Payment processor:</strong> To handle subscription and overage payments. We share the minimum information required to complete a transaction.</li>
+          <li><strong>Google LLC (Google Analytics 4):</strong> For website analytics on fineintegrity.com. GA4 may transfer anonymised analytics data to Google's servers. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+        </ul>
+        <p>We may disclose personal data to law enforcement or regulatory authorities when required to do so by law, court order, or government directive.</p>
+      </section>
+
+      <section>
+        <h2>5. Data retention</h2>
+        <ul>
+          <li><strong>Active Subscriber accounts:</strong> Data is retained for the duration of your subscription plus 6 months after account closure, to allow dispute resolution.</li>
+          <li><strong>Billing records:</strong> Retained for 7 years as required under Indian tax and accounting law.</li>
+          <li><strong>Campaign data and delivery logs:</strong> Retained for 12 months from the date of campaign dispatch.</li>
+          <li><strong>End-customer contact lists you upload:</strong> Deleted within 30 days of account closure or earlier upon your written request.</li>
+          <li><strong>Website analytics:</strong> GA4 data retention is set to 14 months. Raw event data is not personally identifiable at our end.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. Data storage and residency</h2>
+        <p>All Subscriber account data and campaign data is stored exclusively in <strong>Microsoft Azure's Central India (Pune) region</strong>. We do not transfer or replicate this data to servers outside India for storage or primary processing.</p>
+        <p>Third-party analytics data (GA4) and communications infrastructure (WhatsApp Business API, email delivery) may involve data flows governed by those providers' own terms and data transfer mechanisms.</p>
+      </section>
+
+      <section>
+        <h2>7. Your rights as a Data Principal</h2>
+        <p>Under the DPDP Act 2023 and applicable law, you have the following rights in respect of personal data for which Fine Integrity is the Data Fiduciary:</p>
+        <ul>
+          <li><strong>Right to access:</strong> Request a summary of the personal data we hold about you and the purposes for which it is processed.</li>
+          <li><strong>Right to correction:</strong> Request correction of inaccurate or incomplete personal data.</li>
+          <li><strong>Right to erasure:</strong> Request deletion of your personal data where we no longer have a lawful basis to retain it (subject to legal retention obligations).</li>
+          <li><strong>Right to withdraw consent:</strong> Where processing is based on consent, you may withdraw consent at any time. Withdrawal does not affect prior processing.</li>
+          <li><strong>Right to grievance redressal:</strong> Lodge a complaint with our Grievance Officer (see Section 10) and, if unresolved, with the Data Protection Board of India once constituted.</li>
+          <li><strong>Right to nominate:</strong> Nominate another individual to exercise these rights on your behalf in the event of your death or incapacity.</li>
+        </ul>
+        <p>To exercise any of these rights, write to us at <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a>. We will acknowledge your request within 48 hours and respond substantively within 30 days.</p>
+        <p><em>Note: If you are a customer of a business that uses Prachar to send you campaigns (an "end-customer"), your data is processed on that business's instructions. Please contact that business to exercise your rights regarding their campaigns. You can also reply STOP to any WhatsApp message to opt out of future messages from that business on our platform.</em></p>
+      </section>
+
+      <section>
+        <h2>8. Children's data</h2>
+        <p>The Prachar platform is intended for use by businesses and is not directed at individuals under 18 years of age. We do not knowingly collect personal data from minors. If you believe a minor's data has been submitted to us, contact our Grievance Officer immediately and we will delete it.</p>
+      </section>
+
+      <section>
+        <h2>9. Cookies and analytics</h2>
+        <p>Our marketing website (fineintegrity.com) uses Google Analytics 4. GA4 sets cookies (e.g., <code>_ga</code>, <code>_ga_&lt;ID&gt;</code>) to distinguish unique visitors and measure traffic. The data collected is aggregated and anonymised before we review it — we do not use GA4 to identify individuals.</p>
+        <p>We also use a GA4 cross-domain linker so that a visit that starts on <code>fineintegrity.com</code> and continues to <code>app.fineintegrity.com</code> is counted as a single session for analytics purposes.</p>
+        <p>You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a> or by blocking cookies in your browser settings. Opting out does not affect your ability to use the Prachar platform.</p>
+      </section>
+
+      <section>
+        <h2>10. Grievance Officer</h2>
+        <p>In accordance with the Information Technology Act 2000 and the DPDP Act 2023, we have designated a Grievance Officer:</p>
+        <ul>
+          <li><strong>Name:</strong> [TO BE FILLED: Designated Grievance Officer Name]</li>
+          <li><strong>Designation:</strong> Grievance Officer, Fine Integrity</li>
+          <li><strong>Email:</strong> <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a></li>
+          <li><strong>Address:</strong> Fine Integrity, Pune, Maharashtra, India</li>
+        </ul>
+        <p>Complaints can be submitted by email. We will acknowledge receipt within 48 hours and resolve grievances within 30 days.</p>
+      </section>
+
+      <section>
+        <h2>11. Changes to this policy</h2>
+        <p>We may update this Privacy Policy to reflect changes in the platform, applicable law, or our data practices. When we make material changes, we will notify active Subscribers by email at least 15 days before the change takes effect. The "Last updated" date at the top of this page reflects the most recent revision. Continued use of Prachar after the effective date constitutes acceptance of the updated policy.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-block-start: calc(var(--header-h) + var(--s-12));
+    padding-block-end: var(--s-20);
+  }
+
+  .legal-inner {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-8);
+  }
+
+  .legal-inner h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--c-indigo-dark);
+    letter-spacing: -.5px;
+  }
+
+  .legal-updated {
+    font-size: .875rem;
+    color: var(--c-muted);
+  }
+
+  .legal-inner section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .legal-inner h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--c-indigo-dark);
+  }
+
+  .legal-inner p {
+    color: var(--c-muted);
+    line-height: 1.7;
+  }
+
+  .legal-inner ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding-inline-start: var(--s-5);
+    color: var(--c-muted);
+    line-height: 1.7;
+  }
+
+  .legal-inner li {
+    padding-inline-start: var(--s-1);
+  }
+
+  .legal-inner code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: .85em;
+    background: var(--c-canvas);
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--c-indigo-dark);
+  }
+
+  .legal-inner a {
+    color: var(--c-primary);
+    text-decoration: underline;
+  }
+  .legal-inner a:hover { color: var(--c-primary-deep); }
+</style>

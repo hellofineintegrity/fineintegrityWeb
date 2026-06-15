@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header     from '../components/Header.astro';
+import Footer     from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Terms of Service — Prachar"
+  description="Terms and conditions governing your use of the Prachar campaign automation platform by Fine Integrity."
+  canonical={Astro.url.href}
+>
+  <Header />
+  <main class="legal-page">
+    <div class="container legal-inner">
+      <h1>Terms of Service</h1>
+      <p class="legal-updated">Last updated: June 2026 &nbsp;·&nbsp; Effective: June 2026</p>
+
+      <!-- TODO: Have this document reviewed by a lawyer familiar with Indian
+           contract law, IT Act 2000, Consumer Protection Act 2019, TRAI
+           regulations, and Meta's WhatsApp Business Policy before public launch. -->
+
+      <section>
+        <h2>1. Acceptance and eligibility</h2>
+        <p>By registering for, accessing, or using the Prachar platform ("Service"), you agree to be bound by these Terms of Service ("Terms"). If you are registering on behalf of a business, you represent that you have the authority to bind that business to these Terms.</p>
+        <p>To use Prachar, you must:</p>
+        <ul>
+          <li>Be at least 18 years of age;</li>
+          <li>Operate a legitimate business registered or operating in India;</li>
+          <li>Have authority to communicate with the customers whose contact details you upload; and</li>
+          <li>Comply with all applicable Indian laws, TRAI regulations, and Meta's WhatsApp Business Policy.</li>
+        </ul>
+        <p>If you do not agree to these Terms, do not access or use the Service.</p>
+      </section>
+
+      <section>
+        <h2>2. Description of service</h2>
+        <p>Prachar is an AI-powered marketing campaign automation platform operated by <strong>Fine Integrity</strong>, Pune, Maharashtra, India. The Service enables registered businesses ("Subscribers") to:</p>
+        <ul>
+          <li>Describe promotional offers in natural language (English or Hindi) and receive AI-generated campaign content;</li>
+          <li>Review and approve campaign content before it is sent;</li>
+          <li>Send approved campaigns via WhatsApp and email to their customers;</li>
+          <li>Track delivery, open rates, and basic campaign performance.</li>
+        </ul>
+        <p>The Service is provided on a subscription basis per Branch per calendar month. "Branch" means a single business location or operating unit registered on Prachar.</p>
+      </section>
+
+      <section>
+        <h2>3. Account registration and security</h2>
+        <p>You must provide accurate and complete information when registering. You are responsible for:</p>
+        <ul>
+          <li>Maintaining the confidentiality of your account credentials;</li>
+          <li>All activity that occurs under your account;</li>
+          <li>Notifying us immediately at <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a> if you suspect unauthorised access to your account.</li>
+        </ul>
+        <p>We reserve the right to suspend or terminate accounts where we reasonably suspect a breach of security or misuse of the Service.</p>
+      </section>
+
+      <section>
+        <h2>4. WhatsApp Business API compliance</h2>
+        <p>The WhatsApp messaging functionality within Prachar is delivered through Meta's WhatsApp Business API. By using this feature, you additionally agree to comply with:</p>
+        <ul>
+          <li>Meta's <a href="https://www.whatsapp.com/legal/business-policy/" target="_blank" rel="noopener">WhatsApp Business Policy</a>;</li>
+          <li>Meta's <a href="https://www.whatsapp.com/legal/commerce-policy/" target="_blank" rel="noopener">Commerce Policy</a> (if you sell products or services via WhatsApp);</li>
+          <li>TRAI's Telecom Commercial Communications Customer Preference Regulations (TCCCPR).</li>
+        </ul>
+        <p>You acknowledge that Meta may reject, throttle, or block WhatsApp message templates at its sole discretion. Fine Integrity is not responsible for template rejections or delivery failures caused by Meta's systems or policies. We will relay rejection reasons to you where Meta provides them.</p>
+      </section>
+
+      <section>
+        <h2>5. Acceptable use</h2>
+        <p>You agree to use Prachar only for lawful promotional and transactional communications. You must not use the Service to:</p>
+        <ul>
+          <li>Send unsolicited messages to individuals who have not opted in to receive communications from your business;</li>
+          <li>Send content that is illegal, defamatory, obscene, threatening, or violates the rights of any third party;</li>
+          <li>Violate TRAI regulations regarding commercial communication;</li>
+          <li>Impersonate another business or person;</li>
+          <li>Upload malware, viruses, or any harmful code;</li>
+          <li>Attempt to gain unauthorised access to the platform or its underlying infrastructure;</li>
+          <li>Use the Service in a manner that disproportionately burdens our infrastructure (e.g., scripted API abuse);</li>
+          <li>Promote products or services prohibited under Indian law or Meta's policies (including pharmaceuticals without approval, gambling, or adult content).</li>
+        </ul>
+        <p>We reserve the right to suspend your account immediately and without notice if we determine a breach of this section. You are liable for any loss, claim, or penalty arising from your non-compliant use.</p>
+      </section>
+
+      <section>
+        <h2>6. Subscription plans and billing</h2>
+        <p>Subscriptions are charged monthly per Branch. Current plans and pricing are displayed on our <a href="/#pricing">Pricing page</a>. All prices are in Indian Rupees (INR) and exclude applicable taxes (GST).</p>
+        <p><strong>Free Trial:</strong> New Subscribers receive one free month per Branch, limited to 500 WhatsApp messages, 2,000 emails, and 5 Campaigns. No credit card is required to start a trial. At the end of the trial period, continued use requires selection of a paid plan.</p>
+        <p><strong>Paid plans:</strong> Subscription fees are billed at the start of each billing month. Failure to pay within 7 days of the due date may result in suspension of your account. All subscription fees are non-refundable except as described in Section 7.</p>
+        <p><strong>Overage charges:</strong> If your usage exceeds the WhatsApp message or email quota included in your plan, overage charges apply at the per-message / per-email rates listed on the Pricing page at the time of usage. Overages are billed at the end of the billing month.</p>
+        <p><strong>Price changes:</strong> We will notify active Subscribers by email at least 30 days before any price increase takes effect. Continued use after the effective date constitutes acceptance of the new pricing.</p>
+      </section>
+
+      <section>
+        <h2>7. Cancellation and refunds</h2>
+        <p>You may cancel your subscription at any time from your Branch settings. Cancellation takes effect at the end of the current billing month, after which your Branch will be downgraded to a read-only state and then deactivated.</p>
+        <p>We do not issue refunds for partial months of a paid subscription. We may, at our sole discretion, issue a pro-rata credit or refund in the event of a significant platform outage (greater than 48 hours of cumulative downtime in a billing month) directly attributable to our systems.</p>
+        <p>If we terminate your account for breach of these Terms, no refund is due.</p>
+      </section>
+
+      <section>
+        <h2>8. Intellectual property</h2>
+        <p><strong>Our rights:</strong> The Prachar platform, brand, logo, website, AI models, and underlying technology are owned by or licensed to Fine Integrity. Nothing in these Terms transfers any ownership rights in the platform to you.</p>
+        <p><strong>Your rights:</strong> You retain full ownership of your business data — your brand assets, promotional offers, customer lists, and any content you provide as input. You grant Fine Integrity a limited, non-exclusive licence to process and use your input data solely for the purpose of providing the Service to you.</p>
+        <p><strong>AI-generated content:</strong> Campaign text generated by Prachar's AI based on your inputs is provided to you for your use. You are responsible for reviewing and approving campaign content before it is sent. Fine Integrity makes no warranty that AI-generated content is free from errors, and you should not send content you have not reviewed.</p>
+      </section>
+
+      <section>
+        <h2>9. Customer data and confidentiality</h2>
+        <p>You are the Data Fiduciary for personal data of your customers (phone numbers and email addresses) that you upload to Prachar. You warrant that:</p>
+        <ul>
+          <li>You have obtained valid, specific, and informed consent from each individual in your contact lists to receive WhatsApp and/or email marketing communications from your business;</li>
+          <li>Your use of that data complies with the DPDP Act 2023, IT Act 2000, and any other applicable law;</li>
+          <li>You will maintain records of such consent and provide them to us or any regulatory authority upon request.</li>
+        </ul>
+        <p>Fine Integrity will process your customer data only as your Data Processor, in accordance with our <a href="/privacy-policy">Privacy Policy</a>, and will not use your customer data for any purpose other than delivering your campaigns and related service operations.</p>
+      </section>
+
+      <section>
+        <h2>10. Availability and service levels</h2>
+        <p>We target 99% uptime for the Prachar platform, excluding scheduled maintenance (for which we will give at least 12 hours' notice outside peak festival windows) and events outside our reasonable control. We do not guarantee uninterrupted access or that the Service will be error-free.</p>
+        <p>We are not responsible for campaign delivery failures caused by Meta's WhatsApp systems, internet connectivity issues, or telecommunications network outages.</p>
+      </section>
+
+      <section>
+        <h2>11. Disclaimer of warranties</h2>
+        <p>The Service is provided "as is" and "as available". To the fullest extent permitted by applicable law, Fine Integrity disclaims all warranties, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+        <p>We do not warrant that: (a) AI-generated campaign content will achieve any particular marketing result; (b) WhatsApp messages will be delivered by Meta; (c) email campaigns will not be classified as spam by recipients' email providers; or (d) the platform will be free from bugs or security vulnerabilities.</p>
+      </section>
+
+      <section>
+        <h2>12. Limitation of liability</h2>
+        <p>To the maximum extent permitted by Indian law, Fine Integrity's total cumulative liability to you for any claims arising from or related to the Service in any twelve-month period shall not exceed the total subscription fees you paid to us in that same twelve-month period.</p>
+        <p>In no event shall Fine Integrity be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, loss of business, loss of goodwill, or loss of data, even if advised of the possibility of such damages.</p>
+        <p>Nothing in these Terms limits liability for death or personal injury caused by our negligence, fraud, or fraudulent misrepresentation, or any other liability that cannot be excluded or limited under applicable Indian law.</p>
+      </section>
+
+      <section>
+        <h2>13. Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless Fine Integrity and its officers, directors, employees, and agents from and against any claims, damages, penalties, losses, and expenses (including reasonable legal fees) arising from:</p>
+        <ul>
+          <li>Your violation of these Terms or applicable law;</li>
+          <li>Your use of the Service in a manner not authorised or contemplated by these Terms;</li>
+          <li>Your failure to obtain valid consent from your customers before sending them campaigns via Prachar;</li>
+          <li>Any claim by your customers arising from campaigns you send through the platform.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>14. Force majeure</h2>
+        <p>Neither party shall be liable for delays or failure to perform obligations under these Terms where such delay or failure is caused by circumstances beyond that party's reasonable control, including but not limited to acts of God, government action, internet or telecommunications network outages, pandemic, or natural disasters.</p>
+      </section>
+
+      <section>
+        <h2>15. Governing law and dispute resolution</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of India, without regard to conflict of law principles.</p>
+        <p>In the event of any dispute arising under or in connection with these Terms, the parties shall first attempt to resolve it through good-faith negotiation. If the dispute is not resolved within 30 days of written notice, it shall be subject to the exclusive jurisdiction of the competent courts in <strong>Pune, Maharashtra, India</strong>.</p>
+      </section>
+
+      <section>
+        <h2>16. Amendments</h2>
+        <p>We may update these Terms at any time. We will provide at least 30 days' advance notice of material changes by email to your registered address or by a prominent notice on the platform. Continued use of the Service after the effective date of revised Terms constitutes your acceptance. If you do not accept the revised Terms, your sole remedy is to stop using the Service and cancel your subscription.</p>
+      </section>
+
+      <section>
+        <h2>17. Grievance Officer</h2>
+        <p>In accordance with the Information Technology Act 2000 and Consumer Protection Act 2019, we have designated a Grievance Officer:</p>
+        <ul>
+          <li><strong>Name:</strong> [TO BE FILLED: Designated Grievance Officer Name]</li>
+          <li><strong>Designation:</strong> Grievance Officer, Fine Integrity</li>
+          <li><strong>Email:</strong> <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a></li>
+          <li><strong>Address:</strong> Fine Integrity, Pune, Maharashtra, India</li>
+        </ul>
+        <p>Complaints will be acknowledged within 48 hours and addressed within 30 days.</p>
+      </section>
+
+      <section>
+        <h2>18. Contact</h2>
+        <p>For general questions about these Terms or the Prachar platform, write to us at <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a>. We aim to respond to all queries within 2 business days.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-block-start: calc(var(--header-h) + var(--s-12));
+    padding-block-end: var(--s-20);
+  }
+
+  .legal-inner {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-8);
+  }
+
+  .legal-inner h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--c-indigo-dark);
+    letter-spacing: -.5px;
+  }
+
+  .legal-updated {
+    font-size: .875rem;
+    color: var(--c-muted);
+  }
+
+  .legal-inner section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .legal-inner h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--c-indigo-dark);
+  }
+
+  .legal-inner p {
+    color: var(--c-muted);
+    line-height: 1.7;
+  }
+
+  .legal-inner ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding-inline-start: var(--s-5);
+    color: var(--c-muted);
+    line-height: 1.7;
+  }
+
+  .legal-inner li {
+    padding-inline-start: var(--s-1);
+  }
+
+  .legal-inner a {
+    color: var(--c-primary);
+    text-decoration: underline;
+  }
+  .legal-inner a:hover { color: var(--c-primary-deep); }
+</style>

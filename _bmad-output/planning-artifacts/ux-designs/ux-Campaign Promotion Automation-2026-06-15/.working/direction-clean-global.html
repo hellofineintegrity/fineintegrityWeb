@@ -1,0 +1,729 @@
+<!--
+  DIRECTION 2: "CLEAN GLOBAL"
+  Rationale: Deep teal on near-white creates the trustworthy, uncluttered register of global SaaS
+  leaders like Notion and Linear — reassuring to the SMB owner who is skeptical about software and
+  needs to feel the product is serious and reliable. The generous whitespace and restrained type
+  scale communicate professionalism without cold distance, while the teal colour carries subtle
+  warmth and avoids the overused blue that saturates Indian B2B software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prachar — Clean Global Direction</title>
+  <style>
+    /* =============================================
+       COLOUR TOKENS — CLEAN GLOBAL
+       Primary Teal:      #0F766E
+       Teal Mid:          #0D9488
+       Teal Light:        #CCFBF1
+       Teal Ultra Light:  #F0FDFA
+       Off-White BG:      #FAFAFA
+       Surface White:     #FFFFFF
+       Dark Text:         #0F172A   (near-black)
+       Mid Text:          #334155
+       Muted Text:        #64748B
+       Border Subtle:     #E2E8F0
+       Border Strong:     #CBD5E1
+       Accent Green:      #16A34A
+       Amber Warm:        #D97706   (warm accent for highlights)
+       Canvas BG:         #E8EDF2
+       ============================================= */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #E8EDF2; /* canvas grey */
+      color: #0F172A;
+    }
+
+    /* ---- DESKTOP STICKY HEADER ---- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+    }
+
+    .wordmark-latin {
+      font-size: 21px;
+      font-weight: 600;
+      color: #0F766E;    /* Primary Teal */
+      letter-spacing: -0.3px;
+    }
+
+    .wordmark-deva {
+      font-size: 9px;
+      color: #94A3B8;    /* light grey */
+      letter-spacing: 0.5px;
+      margin-top: 3px;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #334155;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #0F766E; }
+
+    .nav-lang {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #64748B;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .nav-lang svg { width: 16px; height: 16px; fill: none; stroke: #64748B; stroke-width: 1.5; }
+
+    .btn-nav-cta {
+      background: #0F766E;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.1px;
+      transition: background 0.2s;
+    }
+    .btn-nav-cta:hover { background: #0D9488; }
+
+    /* ---- DESKTOP CANVAS ---- */
+    .canvas {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .canvas-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #64748B;
+      margin-bottom: 16px;
+    }
+
+    /* ---- PHONE FRAME ---- */
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+
+    .phone-frame {
+      width: 375px;
+      background: #FAFAFA;
+      border-radius: 44px;
+      box-shadow: 0 24px 64px rgba(15,118,110,0.14), 0 0 0 8px #0F172A, 0 0 0 10px #1E293B;
+      overflow: hidden;
+    }
+
+    .phone-notch {
+      height: 30px;
+      background: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-notch-pill {
+      width: 90px;
+      height: 10px;
+      background: #1E293B;
+      border-radius: 99px;
+    }
+
+    /* ---- MOBILE NAV ---- */
+    .mobile-nav {
+      background: #FFFFFF;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .mobile-wordmark-latin {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0F766E;
+    }
+    .mobile-wordmark-deva {
+      font-size: 8px;
+      color: #94A3B8;
+      display: block;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .hamburger {
+      width: 24px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: #64748B;
+      border-radius: 2px;
+    }
+    .hamburger span:last-child { width: 65%; }
+
+    /* ---- MOBILE HERO ---- */
+    .mobile-hero {
+      background: #FAFAFA;
+      padding: 36px 24px 40px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F0FDFA;
+      border: 1px solid #CCFBF1;
+      border-radius: 99px;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #0F766E;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: #0D9488;
+      border-radius: 50%;
+    }
+
+    .hero-h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.25;
+      letter-spacing: -0.4px;
+      margin-bottom: 14px;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: #0F766E;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      background: #0F766E;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 3px 16px rgba(15,118,110,0.30);
+    }
+
+    .btn-ncr {
+      display: block;
+      text-align: center;
+      font-size: 11px;
+      color: #94A3B8;
+      margin-top: 8px;
+    }
+
+    /* ---- DIVIDER ---- */
+    .section-divider {
+      height: 1px;
+      background: #E2E8F0;
+      margin: 0 20px;
+    }
+
+    /* ---- WHATSAPP MOCK CARD ---- */
+    .wa-card-wrap {
+      background: #FFFFFF;
+      padding: 20px 20px 8px;
+    }
+
+    .wa-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #64748B;
+      margin-bottom: 12px;
+    }
+
+    .wa-card {
+      background: #FAFAFA;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(15,23,42,0.08);
+      border: 1px solid #E2E8F0;
+    }
+
+    .wa-card-header {
+      background: #0F766E;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wa-shop-icon {
+      width: 34px;
+      height: 34px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .wa-shop-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .wa-shop-sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .wa-card-body {
+      padding: 14px 16px;
+      background: #FFFFFF;
+    }
+    .wa-festival-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #D97706;
+      margin-bottom: 6px;
+    }
+    .wa-headline {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .wa-body-text {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .wa-offer-pill {
+      display: inline-block;
+      background: #FEF9EE;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .wa-cta-strip {
+      background: #0F766E;
+      margin: 0 -16px -14px;
+      padding: 11px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #CCFBF1;
+      text-align: center;
+    }
+
+    /* ---- TRUST BAR ---- */
+    .trust-bar {
+      background: #F8FAFC;
+      border-top: 1px solid #E2E8F0;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trust-dot { width: 6px; height: 6px; background: #16A34A; border-radius: 50%; flex-shrink: 0; }
+    .trust-text { font-size: 10px; color: #64748B; line-height: 1.4; }
+
+    /* ---- FEATURE CARD PEEK ---- */
+    .feature-peek {
+      background: #FFFFFF;
+      padding: 16px 20px 24px;
+    }
+
+    .feature-peek-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #64748B;
+      margin-bottom: 12px;
+    }
+
+    .feature-card {
+      background: #F8FAFC;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #E2E8F0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #F0FDFA;
+      border: 1px solid #CCFBF1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .feature-text h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+    .feature-text p {
+      font-size: 11.5px;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    .scroll-hint {
+      text-align: center;
+      padding: 8px 0 16px;
+      font-size: 18px;
+      opacity: 0.3;
+      color: #0F766E;
+    }
+
+    /* ---- DESKTOP SECTION ---- */
+    .desktop-section {
+      background: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(15,23,42,0.08);
+      border: 1px solid #E2E8F0;
+    }
+
+    .desktop-label-bar {
+      background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 12px 24px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #64748B;
+    }
+
+    .desktop-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+
+    .desktop-hero-left {
+      background: #FFFFFF;
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid #E2E8F0;
+    }
+
+    .desktop-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #F0FDFA;
+      border: 1px solid #CCFBF1;
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #0F766E;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    .desktop-h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.18;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .desktop-h1 em {
+      font-style: normal;
+      color: #0F766E;
+    }
+
+    .desktop-sub {
+      font-size: 17px;
+      color: #64748B;
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+
+    .desktop-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-primary-desktop {
+      background: #0F766E;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(15,118,110,0.28);
+    }
+
+    .btn-ncr-desktop {
+      font-size: 12px;
+      color: #94A3B8;
+    }
+
+    .desktop-trust {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .desktop-trust-dot { width: 7px; height: 7px; background: #16A34A; border-radius: 50%; flex-shrink: 0; }
+    .desktop-trust-text { font-size: 12px; color: #64748B; }
+
+    .desktop-hero-right {
+      background: #FAFAFA;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .desktop-wa-card {
+      width: 340px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(15,23,42,0.10);
+      border: 1px solid #E2E8F0;
+    }
+
+    /* Subtle grid overlay on right panel */
+    .desktop-hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(15,118,110,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,118,110,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .desktop-hero-right {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY DESKTOP HEADER -->
+  <header class="site-header">
+    <div class="wordmark">
+      <div class="wordmark-latin">Prachar</div>
+      <div class="wordmark-deva">प्रचार</div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+        <li>
+          <span class="nav-lang">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            EN ▾
+          </span>
+        </li>
+      </ul>
+    </nav>
+    <button class="btn-nav-cta">Start Free Trial</button>
+  </header>
+
+  <!-- CANVAS -->
+  <div class="canvas">
+    <div class="canvas-label">Mobile View — 375px (Android Primary)</div>
+
+    <!-- PHONE FRAME -->
+    <div class="phone-wrap">
+      <div class="phone-frame">
+        <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav">
+          <div>
+            <span class="mobile-wordmark-latin">Prachar</span>
+            <span class="mobile-wordmark-deva">प्रचार</span>
+          </div>
+          <div class="hamburger">
+            <span></span><span></span><span></span>
+          </div>
+        </nav>
+
+        <!-- Mobile Hero -->
+        <div class="mobile-hero">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            AI Campaign Automation
+          </div>
+          <h1 class="hero-h1">Festival campaigns your customers actually <em>open</em> — in 5 minutes.</h1>
+          <p class="hero-sub">AI-generated WhatsApp and email promotions for Indian businesses. No designer. No agency. Just describe your offer.</p>
+          <button class="btn-primary">Start Free Trial</button>
+          <span class="btn-ncr">No Credit Card Required</span>
+        </div>
+
+        <!-- WhatsApp Sample Card -->
+        <div class="wa-card-wrap">
+          <div class="wa-card-label">Sample Prachar-generated Diwali campaign — WhatsApp format</div>
+          <div class="wa-card">
+            <div class="wa-card-header">
+              <div class="wa-shop-icon">🛍️</div>
+              <div>
+                <div class="wa-shop-name">Sharma Garments</div>
+                <div class="wa-shop-sub">Business · Verified</div>
+              </div>
+            </div>
+            <div class="wa-card-body">
+              <div class="wa-festival-tag">✨ Diwali Special Offer</div>
+              <div class="wa-headline">Celebrate Diwali with Upto 40% Off on Ethnic Wear! 🪔</div>
+              <div class="wa-body-text">Namaste! Get festive-ready with our exclusive Diwali collection. Silk sarees, kurtas, and lehengas — handpicked for your celebrations.<br><br>🎁 Extra 5% off on orders above ₹2,000</div>
+              <div class="wa-offer-pill">🏷️ Use code: DIWALI40</div>
+              <div class="wa-cta-strip">👆 Shop Now — Offer ends Oct 31</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="trust-bar">
+          <span class="trust-dot"></span>
+          <span class="trust-text">Trusted by automotive services, garments shops, and grocery businesses</span>
+        </div>
+
+        <!-- Feature peek -->
+        <div class="feature-peek">
+          <div class="feature-peek-label">Why Prachar</div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-text">
+              <h3>Campaign Ready in 5 Minutes</h3>
+              <p>Describe your offer in plain language. AI handles copywriting, formatting, and scheduling.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-hint">⌄</div>
+      </div>
+    </div>
+
+    <!-- DESKTOP SECTION -->
+    <div class="canvas-label">Desktop Layout — 1280px</div>
+    <div class="desktop-section">
+      <div class="desktop-label-bar">Desktop Hero — Direction 2: Clean Global</div>
+      <div class="desktop-hero">
+        <div class="desktop-hero-left">
+          <div class="desktop-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            AI Campaign Automation
+          </div>
+          <h1 class="desktop-h1">Festival campaigns your customers actually <em>open</em> — in 5 minutes.</h1>
+          <p class="desktop-sub">AI-generated WhatsApp and email promotions for Indian businesses. No designer. No agency. Just describe your offer.</p>
+          <div class="desktop-cta-row">
+            <button class="btn-primary-desktop">Start Free Trial</button>
+            <span class="btn-ncr-desktop">No Credit Card Required</span>
+          </div>
+          <div class="desktop-trust">
+            <span class="desktop-trust-dot"></span>
+            <span class="desktop-trust-text">Trusted by automotive services, garments shops, and grocery businesses</span>
+          </div>
+        </div>
+        <div class="desktop-hero-right">
+          <div class="desktop-wa-card">
+            <div class="wa-card-header">
+              <div class="wa-shop-icon">🛍️</div>
+              <div>
+                <div class="wa-shop-name">Sharma Garments</div>
+                <div class="wa-shop-sub">Business · Verified</div>
+              </div>
+            </div>
+            <div class="wa-card-body">
+              <div class="wa-festival-tag">✨ Diwali Special Offer</div>
+              <div class="wa-headline">Celebrate Diwali with Upto 40% Off on Ethnic Wear! 🪔</div>
+              <div class="wa-body-text">Namaste! Get festive-ready with our exclusive Diwali collection. Silk sarees, kurtas, and lehengas — handpicked for your celebrations.<br><br>🎁 Extra 5% off on orders above ₹2,000</div>
+              <div class="wa-offer-pill">🏷️ Use code: DIWALI40</div>
+              <div class="wa-cta-strip">👆 Shop Now — Offer ends Oct 31</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

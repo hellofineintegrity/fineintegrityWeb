@@ -1,0 +1,77 @@
+---
+const REG     = 'https://app.fineintegrity.com/register';
+const finalCTA = `${REG}?utm_source=website&utm_medium=final-cta&utm_campaign=free-trial`;
+---
+
+<section class="section final-cta-section" aria-label="Sign up">
+  <div class="container final-inner">
+    <h2 class="final-headline">Ready for this festival season?</h2>
+    <p class="final-sub">Your first 5 campaigns are free. No credit card required.</p>
+
+    <a
+      href={finalCTA}
+      class="btn final-btn"
+      data-cta
+      data-cta-location="final-cta"
+    >
+      Start Free Trial
+      <span class="btn-sub">No Credit Card Required</span>
+    </a>
+
+    <div class="trust-row final-trust" aria-label="Reassurances">
+      <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>1 month free</div>
+      <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Cancel anytime</div>
+      <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>From ₹999/month after</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    background: var(--c-indigo-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Warm glow accent */
+  .final-cta-section::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom right, rgba(249,115,22,.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .final-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-6);
+    text-align: center;
+  }
+
+  .final-headline {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -.5px;
+    line-height: 1.15;
+  }
+
+  .final-sub {
+    font-size: 1.0625rem;
+    color: var(--c-primary-light);
+    max-width: 420px;
+  }
+
+  .final-btn { font-size: 1.0625rem; padding: 14px 36px; }
+
+  .final-trust { justify-content: center; }
+  .final-trust .trust-item { color: rgba(255,255,255,.6); }
+  .final-trust .trust-dot  { background: var(--c-primary); }
+</style>

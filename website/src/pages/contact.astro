@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header     from '../components/Header.astro';
+import Footer     from '../components/Footer.astro';
+
+// TODO: Replace with your Web3Forms access key.
+// Steps to get one (free, takes 2 minutes):
+//   1. Go to https://web3forms.com
+//   2. Enter hello@fineintegrity.com in the box → click "Create Access Key"
+//   3. Copy the key from the email you receive
+//   4. Paste it below
+const WEB3FORMS_KEY = '99e0589e-23a8-47cf-b3fe-4f81117a2c38';
+---
+
+<BaseLayout
+  title="Contact Us — Prachar"
+  description="Get in touch with the Prachar team. We reply within 1 business day."
+  canonical={Astro.url.href}
+>
+  <Header />
+  <main class="contact-page">
+    <div class="container contact-inner">
+
+      <!-- Page header -->
+      <div class="contact-head">
+        <p class="eyebrow">Get in Touch</p>
+        <h1 class="section-headline">We'd love to hear from you</h1>
+        <p class="contact-sub">Have a question about Prachar? Leave your details and we'll get back to you within 1 business day.</p>
+      </div>
+
+      <!-- Form card -->
+      <div class="form-card">
+        <form id="contact-form" novalidate>
+          <!-- Web3Forms hidden fields -->
+          <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+          <input type="hidden" name="subject"    value="New Contact Inquiry — Prachar" />
+          <input type="hidden" name="from_name"  value="Prachar Contact Form" />
+          <!-- Honeypot (spam protection) -->
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="field">
+            <label for="cf-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+            <input
+              id="cf-name"
+              type="text"
+              name="name"
+              autocomplete="name"
+              placeholder="Ramesh Sharma"
+              required
+            />
+            <span class="err-msg" id="err-name">Please enter your name.</span>
+          </div>
+
+          <div class="field">
+            <label for="cf-mobile">Mobile Number <span class="req" aria-hidden="true">*</span></label>
+            <div class="phone-wrap">
+              <span class="phone-prefix" aria-hidden="true">+91</span>
+              <input
+                id="cf-mobile"
+                type="tel"
+                name="phone"
+                autocomplete="tel"
+                placeholder="98765 43210"
+                pattern="[6-9][0-9]{9}"
+                maxlength="10"
+                inputmode="numeric"
+                required
+              />
+            </div>
+            <span class="err-msg" id="err-mobile">Please enter a valid 10-digit Indian mobile number.</span>
+          </div>
+
+          <div class="field">
+            <label for="cf-email">Email Address <span class="req" aria-hidden="true">*</span></label>
+            <input
+              id="cf-email"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="ramesh@yourbusiness.com"
+              required
+            />
+            <span class="err-msg" id="err-email">Please enter a valid email address.</span>
+          </div>
+
+          <div class="field">
+            <label for="cf-address">
+              Address
+              <span class="optional">(optional)</span>
+            </label>
+            <textarea
+              id="cf-address"
+              name="address"
+              rows="2"
+              placeholder="Shop / office address, city, state"
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="cf-message">Your Message <span class="req" aria-hidden="true">*</span></label>
+            <textarea
+              id="cf-message"
+              name="message"
+              rows="4"
+              placeholder="Tell us how we can help you…"
+              required
+            ></textarea>
+            <span class="err-msg" id="err-message">Please enter your message.</span>
+          </div>
+
+          <button type="submit" class="btn submit-btn" id="submit-btn">
+            <span class="btn-label">Send Message</span>
+            <svg class="btn-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke-opacity=".25"/>
+              <path d="M12 3a9 9 0 019 9" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Success state (hidden until form submits) -->
+        <div class="success-state" id="success-state" aria-live="polite" hidden>
+          <div class="success-icon" aria-hidden="true">
+            <svg viewBox="0 0 52 52" fill="none">
+              <circle cx="26" cy="26" r="25" stroke="var(--c-success)" stroke-width="2"/>
+              <path d="M14 26l8 8 16-16" stroke="var(--c-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2>Message sent!</h2>
+          <p>Thanks for reaching out. We'll get back to you at your email within 1 business day.</p>
+        </div>
+
+        <!-- Error state -->
+        <p class="form-error" id="form-error" role="alert" hidden>
+          Something went wrong. Please try again or email us directly at
+          <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a>.
+        </p>
+      </div>
+
+      <!-- Alternative contact -->
+      <p class="alt-contact">
+        Or reach us directly at
+        <a href="mailto:hello@fineintegrity.com">hello@fineintegrity.com</a>
+      </p>
+
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const form      = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const success   = document.getElementById('success-state') as HTMLElement;
+  const formErr   = document.getElementById('form-error') as HTMLElement;
+
+  // Strip non-digits from mobile as user types
+  const mobileInput = document.getElementById('cf-mobile') as HTMLInputElement;
+  mobileInput.addEventListener('input', () => {
+    mobileInput.value = mobileInput.value.replace(/\D/g, '').slice(0, 10);
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setLoading(true);
+    formErr.hidden = true;
+
+    const data = new FormData(form);
+    // Prepend +91 to the phone number for the email
+    const phone = data.get('phone') as string;
+    data.set('phone', `+91 ${phone}`);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await res.json();
+      if (json.success) {
+        form.hidden    = true;
+        success.hidden = false;
+        // GA4 conversion event
+        if (typeof gtag === 'function') {
+          gtag('event', 'contact_form_submit', { event_category: 'engagement' });
+        }
+      } else {
+        throw new Error(json.message || 'Submission failed');
+      }
+    } catch {
+      formErr.hidden = false;
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  function setLoading(on: boolean) {
+    submitBtn.disabled = on;
+    submitBtn.classList.toggle('loading', on);
+  }
+
+  function validateForm(): boolean {
+    let ok = true;
+    const name    = (document.getElementById('cf-name')    as HTMLInputElement).value.trim();
+    const mobile  = (document.getElementById('cf-mobile')  as HTMLInputElement).value.trim();
+    const email   = (document.getElementById('cf-email')   as HTMLInputElement).value.trim();
+    const message = (document.getElementById('cf-message') as HTMLTextAreaElement).value.trim();
+
+    showErr('err-name',    !name);
+    showErr('err-mobile',  !/^[6-9]\d{9}$/.test(mobile));
+    showErr('err-email',   !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+    showErr('err-message', !message);
+
+    if (!name || !/^[6-9]\d{9}$/.test(mobile) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message) {
+      ok = false;
+    }
+    return ok;
+  }
+
+  function showErr(id: string, show: boolean) {
+    const el = document.getElementById(id) as HTMLElement;
+    el.hidden = !show;
+    const input = el.previousElementSibling as HTMLElement;
+    (input?.closest('.phone-wrap') ?? input)?.classList.toggle('has-error', show);
+  }
+</script>
+
+<style>
+  .contact-page {
+    padding-block-start: calc(var(--header-h) + var(--s-16));
+    padding-block-end: var(--s-24);
+    background: var(--c-bg);
+    min-height: 100dvh;
+  }
+
+  .contact-inner {
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-10);
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Page header */
+  .contact-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    align-items: center;
+  }
+
+  .contact-sub {
+    color: var(--c-muted);
+    line-height: 1.65;
+    max-width: 420px;
+  }
+
+  /* Form card */
+  .form-card {
+    width: 100%;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-lg);
+    padding: var(--s-8) var(--s-8);
+    box-shadow: var(--sh-1);
+    text-align: left;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+  }
+
+  /* Fields */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  label {
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--c-indigo-dark);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .req { color: var(--c-primary); }
+
+  .optional {
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--c-muted);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--r-md);
+    font-family: var(--font);
+    font-size: .9375rem;
+    color: var(--c-indigo-dark);
+    background: var(--c-surface);
+    transition: border-color .15s, box-shadow .15s;
+    line-height: 1.5;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--c-indigo-soft);
+    box-shadow: 0 0 0 3px rgba(67,56,202,.12);
+  }
+
+  input::placeholder,
+  textarea::placeholder { color: var(--c-muted); opacity: .6; }
+
+  textarea { resize: vertical; min-height: 80px; }
+
+  /* Phone with +91 prefix */
+  .phone-wrap {
+    display: flex;
+    align-items: stretch;
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .phone-wrap:focus-within {
+    border-color: var(--c-indigo-soft);
+    box-shadow: 0 0 0 3px rgba(67,56,202,.12);
+  }
+  .phone-prefix {
+    padding: 10px 12px;
+    background: var(--c-canvas);
+    font-size: .9375rem;
+    font-weight: 600;
+    color: var(--c-muted);
+    border-right: 1.5px solid var(--c-border);
+    user-select: none;
+    display: flex;
+    align-items: center;
+  }
+  .phone-wrap input {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+  }
+  .phone-wrap input:focus { box-shadow: none; }
+
+  /* Error states */
+  .has-error,
+  input.has-error,
+  textarea.has-error {
+    border-color: #DC2626 !important;
+  }
+
+  .err-msg {
+    font-size: .8125rem;
+    color: #DC2626;
+    display: block;
+  }
+  .err-msg[hidden] { display: none; }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%;
+    margin-top: var(--s-2);
+    position: relative;
+    overflow: hidden;
+    gap: var(--s-2);
+  }
+
+  .btn-spinner {
+    width: 20px;
+    height: 20px;
+    display: none;
+    animation: spin .7s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .submit-btn.loading .btn-label  { opacity: .6; }
+  .submit-btn.loading .btn-spinner { display: block; }
+  .submit-btn:disabled { opacity: .7; cursor: not-allowed; }
+
+  /* Success state */
+  .success-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    padding-block: var(--s-6);
+    text-align: center;
+  }
+  .success-state[hidden] { display: none; }
+
+  .success-icon svg {
+    width: 52px;
+    height: 52px;
+  }
+
+  .success-state h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--c-indigo-dark);
+  }
+
+  .success-state p {
+    color: var(--c-muted);
+    line-height: 1.6;
+  }
+
+  /* Form-level error */
+  .form-error {
+    margin-top: var(--s-4);
+    font-size: .875rem;
+    color: #DC2626;
+    line-height: 1.5;
+  }
+  .form-error[hidden] { display: none; }
+  .form-error a { color: #DC2626; text-decoration: underline; }
+
+  /* Alt contact line */
+  .alt-contact {
+    font-size: .875rem;
+    color: var(--c-muted);
+  }
+  .alt-contact a {
+    color: var(--c-primary);
+    text-decoration: underline;
+  }
+  .alt-contact a:hover { color: var(--c-primary-deep); }
+
+  @media (max-width: 479px) {
+    .form-card { padding: var(--s-6) var(--s-5); }
+  }
+</style>

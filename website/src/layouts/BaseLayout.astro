@@ -1,0 +1,155 @@
+---
+import '../styles/global.css';
+
+const {
+  title       = 'Prachar — AI Campaign Automation for Indian Businesses',
+  description = 'AI-powered WhatsApp and email campaign automation for Indian SMBs. Describe your offer in English or Hindi — get a professional campaign in 15 seconds. From ₹999/month.',
+  ogTitle     = 'Festival campaigns in 5 minutes — Prachar',
+  ogDescription = 'Free trial — no credit card required. AI writes your Diwali, Navratri & Eid campaigns. WhatsApp + Email from ₹999/month.',
+  ogImage     = '/og-image.jpg',
+  canonical   = Astro.url.href,
+} = Astro.props;
+
+const GA_ID = 'G-S7FLLZGWV5'; // TODO: Replace with your GA4 Measurement ID
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Prachar',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: 'https://www.fineintegrity.com',
+  description: 'AI-powered WhatsApp and email campaign automation for Indian small businesses.',
+  offers: {
+    '@type': 'Offer',
+    price: '999',
+    priceCurrency: 'INR',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '999',
+      priceCurrency: 'INR',
+      unitText: 'month',
+    },
+  },
+});
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"         content="website" />
+    <meta property="og:url"          content={canonical} />
+    <meta property="og:title"        content={ogTitle} />
+    <meta property="og:description"  content={ogDescription} />
+    <meta property="og:image"        content={`https://www.fineintegrity.com${ogImage}`} />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name"    content="Prachar" />
+    <meta property="og:locale"       content="en_IN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image"       content={`https://www.fineintegrity.com${ogImage}`} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon"  href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={schema}></script>
+
+    <!-- GA4 — async, non-render-blocking -->
+    <Fragment set:html={`
+      <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_ID}', {
+          linker: { domains: ['fineintegrity.com', 'www.fineintegrity.com', 'app.fineintegrity.com'] }
+        });
+      </script>
+    `} />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      /* ---- Hamburger nav drawer ---- */
+      const hamburger  = document.getElementById('hamburger');
+      const navOverlay = document.getElementById('nav-overlay');
+      const closeBtn   = document.getElementById('close-nav');
+
+      function openNav() {
+        navOverlay?.classList.add('open');
+        hamburger?.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        closeBtn?.focus();
+      }
+      function closeNav() {
+        navOverlay?.classList.remove('open');
+        hamburger?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        hamburger?.focus();
+      }
+
+      hamburger?.addEventListener('click', openNav);
+      closeBtn?.addEventListener('click', closeNav);
+      navOverlay?.addEventListener('click', (e) => { if (e.target === navOverlay) closeNav(); });
+      navOverlay?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+      /* ---- Language selector ---- */
+      const langBtn  = document.getElementById('lang-btn');
+      const langDrop = document.getElementById('lang-drop');
+      langBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = langDrop?.classList.toggle('open');
+        langBtn.setAttribute('aria-expanded', String(!!open));
+      });
+      document.addEventListener('click', () => {
+        langDrop?.classList.remove('open');
+        langBtn?.setAttribute('aria-expanded', 'false');
+      });
+
+      /* ---- Anchor fragment fix — Android Chrome / WhatsApp in-app browser ---- */
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) requestAnimationFrame(() => setTimeout(() => target.scrollIntoView({ behavior: 'instant' }), 60));
+      }
+
+      /* ---- GA4 CTA click events ---- */
+      document.querySelectorAll('[data-cta]').forEach(el => {
+        el.addEventListener('click', () => {
+          if (typeof gtag === 'undefined') return;
+          const params = { cta_location: el.dataset.ctaLocation ?? 'unknown' };
+          if (el.dataset.ctaTier) params.plan_tier = el.dataset.ctaTier;
+          gtag('event', 'cta_click', params);
+        });
+      });
+
+      /* ---- GA4 scroll depth ---- */
+      const depths = [25, 50, 75, 90];
+      const fired  = new Set();
+      window.addEventListener('scroll', () => {
+        const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        depths.forEach(d => {
+          if (!fired.has(d) && pct >= d) {
+            fired.add(d);
+            if (typeof gtag !== 'undefined') gtag('event', 'scroll', { percent_scrolled: d });
+          }
+        });
+      }, { passive: true });
+    </script>
+  </body>
+</html>

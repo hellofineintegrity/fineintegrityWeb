@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header     from '../components/Header.astro';
+import Footer     from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — Prachar"
+  description="The page you're looking for doesn't exist."
+>
+  <Header />
+  <main class="not-found">
+    <div class="container nf-inner">
+      <div class="nf-code" aria-hidden="true">404</div>
+      <h1 class="nf-heading">Page not found</h1>
+      <p class="nf-body">The page you're looking for doesn't exist or may have moved.</p>
+      <a href="/" class="btn nf-btn">Go to homepage</a>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block-start: calc(var(--header-h) + var(--s-20));
+    padding-block-end: var(--s-20);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .nf-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--s-6);
+  }
+
+  .nf-code {
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 800;
+    color: var(--c-border);
+    letter-spacing: -4px;
+    line-height: 1;
+  }
+
+  .nf-heading {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--c-indigo-dark);
+  }
+
+  .nf-body {
+    font-size: 1rem;
+    color: var(--c-muted);
+    max-width: 360px;
+  }
+
+  .nf-btn { margin-top: var(--s-2); }
+</style>

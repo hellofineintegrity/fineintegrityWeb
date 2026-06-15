@@ -1,0 +1,811 @@
+<!--
+  DIRECTION 3: "MODERN VIBRANT"
+  Rationale: Deep violet paired with warm yellow-gold creates an unconventional, high-energy palette
+  that immediately separates Prachar from the sea of teal-and-blue Indian SaaS tools. The gradient
+  hero from violet to near-black signals boldness and ambition — the kind of brand energy that
+  earns trust from a younger generation of Indian SMB owners who have grown up with strong global
+  product design. The gold accents carry cultural resonance (auspiciousness, festivity) without
+  leaning into illustration clichés.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prachar — Modern Vibrant Direction</title>
+  <style>
+    /* =============================================
+       COLOUR TOKENS — MODERN VIBRANT
+       Violet Primary:    #6D28D9
+       Violet Mid:        #7C3AED
+       Violet Light:      #8B5CF6
+       Violet Dark:       #4C1D95
+       Near-Black:        #0D0A1A   (hero bg end)
+       Gold Accent:       #F59E0B
+       Gold Light:        #FDE68A
+       Gold Deep:         #D97706
+       White:             #FFFFFF
+       Off-White:         #F9F7FF
+       Surface Card:      #FFFFFF
+       Dark Text:         #0D0A1A
+       Mid Text:          #3B2A6B
+       Muted Text:        #7C6FAE
+       Border Subtle:     #EDE9FE
+       Border Card:       #DDD6FE
+       Canvas BG:         #ECEAF5
+       Success Green:     #16A34A
+       Violet Badge BG:   #6D28D9   (wordmark pill)
+       ============================================= */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #ECEAF5; /* canvas grey-violet */
+      color: #0D0A1A;
+    }
+
+    /* ---- DESKTOP STICKY HEADER ---- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,10,26,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(109,40,217,0.3);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Wordmark: "Prachar" in white on violet pill; "प्रचार" gold below */
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+    }
+
+    .wordmark-pill {
+      background: #6D28D9;
+      border-radius: 8px;
+      padding: 5px 12px;
+      display: inline-block;
+    }
+
+    .wordmark-latin {
+      font-size: 17px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+      line-height: 1;
+    }
+
+    .wordmark-deva {
+      font-size: 9px;
+      color: #F59E0B;   /* Gold Accent */
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      padding-left: 2px;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #C4B5FD;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+
+    .nav-lang {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #A78BFA;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .nav-lang svg { width: 16px; height: 16px; fill: none; stroke: #A78BFA; stroke-width: 1.5; }
+
+    .btn-nav-cta {
+      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 12px rgba(109,40,217,0.40);
+      transition: transform 0.15s;
+    }
+    .btn-nav-cta:hover { transform: translateY(-1px); }
+
+    /* ---- DESKTOP CANVAS ---- */
+    .canvas {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .canvas-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7C6FAE;
+      margin-bottom: 16px;
+    }
+
+    /* ---- PHONE FRAME ---- */
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+
+    .phone-frame {
+      width: 375px;
+      background: #F9F7FF;
+      border-radius: 44px;
+      box-shadow: 0 24px 64px rgba(109,40,217,0.22), 0 0 0 8px #0D0A1A, 0 0 0 10px #1a1040;
+      overflow: hidden;
+    }
+
+    .phone-notch {
+      height: 30px;
+      background: #0D0A1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-notch-pill {
+      width: 90px;
+      height: 10px;
+      background: #1a1040;
+      border-radius: 99px;
+    }
+
+    /* ---- MOBILE NAV ---- */
+    .mobile-nav {
+      background: rgba(13,10,26,0.97);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(109,40,217,0.25);
+    }
+    .mobile-wordmark-pill {
+      background: #6D28D9;
+      border-radius: 6px;
+      padding: 4px 10px;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+    .mobile-wordmark-deva {
+      font-size: 8px;
+      color: #F59E0B;
+      display: block;
+      line-height: 1;
+      margin-top: 2px;
+      padding-left: 2px;
+    }
+    .hamburger {
+      width: 24px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: #A78BFA;
+      border-radius: 2px;
+    }
+    .hamburger span:last-child { width: 65%; }
+
+    /* ---- MOBILE HERO ---- */
+    .mobile-hero {
+      background: linear-gradient(160deg, #4C1D95 0%, #6D28D9 35%, #0D0A1A 100%);
+      padding: 36px 24px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gold radial glow top-right */
+    .mobile-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -30px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(245,158,11,0.14) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+    /* Violet glow bottom-left */
+    .mobile-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(124,58,237,0.20) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.35);
+      border-radius: 99px;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #FDE68A;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: #F59E0B;
+      border-radius: 50%;
+    }
+
+    .hero-h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.18;
+      letter-spacing: -0.6px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: #F59E0B;
+    }
+
+    .hero-sub {
+      font-size: 13.5px;
+      color: #C4B5FD;
+      line-height: 1.65;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #0D0A1A;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 6px 24px rgba(245,158,11,0.40);
+      letter-spacing: 0.1px;
+    }
+
+    .btn-ncr {
+      display: block;
+      text-align: center;
+      font-size: 11px;
+      color: #8B5CF6;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---- WHATSAPP MOCK CARD ---- */
+    .wa-card-wrap {
+      background: #F9F7FF;
+      padding: 20px 20px 8px;
+    }
+
+    .wa-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #7C6FAE;
+      margin-bottom: 12px;
+    }
+
+    .wa-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(109,40,217,0.10);
+      border: 1px solid #DDD6FE;
+    }
+
+    .wa-card-header {
+      background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wa-shop-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .wa-shop-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .wa-shop-sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.70);
+    }
+
+    .wa-card-body {
+      padding: 14px 16px;
+    }
+    .wa-festival-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #D97706;
+      margin-bottom: 6px;
+    }
+    .wa-headline {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0D0A1A;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .wa-body-text {
+      font-size: 12px;
+      color: #4B3F8A;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .wa-offer-pill {
+      display: inline-block;
+      background: #FFFBEB;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .wa-cta-strip {
+      background: linear-gradient(90deg, #6D28D9 0%, #7C3AED 100%);
+      margin: 0 -16px -14px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #FDE68A;
+      text-align: center;
+    }
+
+    /* ---- TRUST BAR ---- */
+    .trust-bar {
+      background: #FFFFFF;
+      border-top: 1px solid #EDE9FE;
+      border-bottom: 1px solid #EDE9FE;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trust-dot { width: 6px; height: 6px; background: #16A34A; border-radius: 50%; flex-shrink: 0; }
+    .trust-text { font-size: 10px; color: #7C6FAE; line-height: 1.4; }
+
+    /* ---- FEATURE CARD PEEK ---- */
+    .feature-peek {
+      background: #F9F7FF;
+      padding: 16px 20px 24px;
+    }
+
+    .feature-peek-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #7C6FAE;
+      margin-bottom: 12px;
+    }
+
+    .feature-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #EDE9FE;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 1px 8px rgba(109,40,217,0.07);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .feature-text h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0D0A1A;
+      margin-bottom: 4px;
+    }
+    .feature-text p {
+      font-size: 11.5px;
+      color: #7C6FAE;
+      line-height: 1.5;
+    }
+
+    .scroll-hint {
+      text-align: center;
+      padding: 8px 0 16px;
+      font-size: 18px;
+      opacity: 0.35;
+      color: #7C3AED;
+    }
+
+    /* ---- DESKTOP SECTION ---- */
+    .desktop-section {
+      background: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(109,40,217,0.12);
+      border: 1px solid #EDE9FE;
+    }
+
+    .desktop-label-bar {
+      background: #0D0A1A;
+      padding: 12px 24px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #A78BFA;
+    }
+
+    .desktop-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+
+    .desktop-hero-left {
+      background: linear-gradient(145deg, #4C1D95 0%, #6D28D9 40%, #0D0A1A 100%);
+      padding: 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gold radial top-right on desktop */
+    .desktop-hero-left::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    /* Subtle star-like dots texture */
+    .desktop-hero-left::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .desktop-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.30);
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #FDE68A;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      width: fit-content;
+      position: relative;
+      z-index: 1;
+    }
+
+    .desktop-h1 {
+      font-size: 44px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .desktop-h1 em {
+      font-style: normal;
+      color: #F59E0B;
+    }
+
+    .desktop-sub {
+      font-size: 16.5px;
+      color: #C4B5FD;
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 440px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .desktop-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary-desktop {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #0D0A1A;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 32px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(245,158,11,0.38);
+    }
+
+    .btn-ncr-desktop {
+      font-size: 12px;
+      color: #8B5CF6;
+    }
+
+    .desktop-trust {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .desktop-trust-dot { width: 7px; height: 7px; background: #16A34A; border-radius: 50%; flex-shrink: 0; }
+    .desktop-trust-text { font-size: 12px; color: #A78BFA; }
+
+    .desktop-hero-right {
+      background: #F9F7FF;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Subtle violet dot grid */
+    .desktop-hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(109,40,217,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .desktop-wa-card {
+      width: 340px;
+      background: #FFFFFF;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 36px rgba(109,40,217,0.14);
+      border: 1px solid #DDD6FE;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY DESKTOP HEADER -->
+  <header class="site-header">
+    <div class="wordmark">
+      <div class="wordmark-pill">
+        <span class="wordmark-latin">Prachar</span>
+      </div>
+      <div class="wordmark-deva">प्रचार</div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+        <li>
+          <span class="nav-lang">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            EN ▾
+          </span>
+        </li>
+      </ul>
+    </nav>
+    <button class="btn-nav-cta">Start Free Trial</button>
+  </header>
+
+  <!-- CANVAS -->
+  <div class="canvas">
+    <div class="canvas-label">Mobile View — 375px (Android Primary)</div>
+
+    <!-- PHONE FRAME -->
+    <div class="phone-wrap">
+      <div class="phone-frame">
+        <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav">
+          <div>
+            <span class="mobile-wordmark-pill">Prachar</span>
+            <span class="mobile-wordmark-deva">प्रचार</span>
+          </div>
+          <div class="hamburger">
+            <span></span><span></span><span></span>
+          </div>
+        </nav>
+
+        <!-- Mobile Hero -->
+        <div class="mobile-hero">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            AI Campaign Automation
+          </div>
+          <h1 class="hero-h1">Festival campaigns your customers actually <em>open</em> — in 5 minutes.</h1>
+          <p class="hero-sub">AI-generated WhatsApp and email promotions for Indian businesses. No designer. No agency. Just describe your offer.</p>
+          <button class="btn-primary">Start Free Trial</button>
+          <span class="btn-ncr">No Credit Card Required</span>
+        </div>
+
+        <!-- WhatsApp Sample Card -->
+        <div class="wa-card-wrap">
+          <div class="wa-card-label">Sample Prachar-generated Diwali campaign — WhatsApp format</div>
+          <div class="wa-card">
+            <div class="wa-card-header">
+              <div class="wa-shop-icon">🛍️</div>
+              <div>
+                <div class="wa-shop-name">Sharma Garments</div>
+                <div class="wa-shop-sub">Business · Verified</div>
+              </div>
+            </div>
+            <div class="wa-card-body">
+              <div class="wa-festival-tag">✨ Diwali Special Offer</div>
+              <div class="wa-headline">Celebrate Diwali with Upto 40% Off on Ethnic Wear! 🪔</div>
+              <div class="wa-body-text">Namaste! Get festive-ready with our exclusive Diwali collection. Silk sarees, kurtas, and lehengas — handpicked for your celebrations.<br><br>🎁 Extra 5% off on orders above ₹2,000</div>
+              <div class="wa-offer-pill">🏷️ Use code: DIWALI40</div>
+              <div class="wa-cta-strip">👆 Shop Now — Offer ends Oct 31</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="trust-bar">
+          <span class="trust-dot"></span>
+          <span class="trust-text">Trusted by automotive services, garments shops, and grocery businesses</span>
+        </div>
+
+        <!-- Feature peek -->
+        <div class="feature-peek">
+          <div class="feature-peek-label">Why Prachar</div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-text">
+              <h3>Campaign Ready in 5 Minutes</h3>
+              <p>Describe your offer in plain language. AI handles copywriting, formatting, and scheduling.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-hint">⌄</div>
+      </div>
+    </div>
+
+    <!-- DESKTOP SECTION -->
+    <div class="canvas-label">Desktop Layout — 1280px</div>
+    <div class="desktop-section">
+      <div class="desktop-label-bar">Desktop Hero — Direction 3: Modern Vibrant</div>
+      <div class="desktop-hero">
+        <div class="desktop-hero-left">
+          <div class="desktop-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            AI Campaign Automation
+          </div>
+          <h1 class="desktop-h1">Festival campaigns your customers actually <em>open</em> — in 5 minutes.</h1>
+          <p class="desktop-sub">AI-generated WhatsApp and email promotions for Indian businesses. No designer. No agency. Just describe your offer.</p>
+          <div class="desktop-cta-row">
+            <button class="btn-primary-desktop">Start Free Trial</button>
+            <span class="btn-ncr-desktop">No Credit Card Required</span>
+          </div>
+          <div class="desktop-trust">
+            <span class="desktop-trust-dot"></span>
+            <span class="desktop-trust-text">Trusted by automotive services, garments shops, and grocery businesses</span>
+          </div>
+        </div>
+        <div class="desktop-hero-right">
+          <div class="desktop-wa-card">
+            <div class="wa-card-header">
+              <div class="wa-shop-icon">🛍️</div>
+              <div>
+                <div class="wa-shop-name">Sharma Garments</div>
+                <div class="wa-shop-sub">Business · Verified</div>
+              </div>
+            </div>
+            <div class="wa-card-body">
+              <div class="wa-festival-tag">✨ Diwali Special Offer</div>
+              <div class="wa-headline">Celebrate Diwali with Upto 40% Off on Ethnic Wear! 🪔</div>
+              <div class="wa-body-text">Namaste! Get festive-ready with our exclusive Diwali collection. Silk sarees, kurtas, and lehengas — handpicked for your celebrations.<br><br>🎁 Extra 5% off on orders above ₹2,000</div>
+              <div class="wa-offer-pill">🏷️ Use code: DIWALI40</div>
+              <div class="wa-cta-strip">👆 Shop Now — Offer ends Oct 31</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

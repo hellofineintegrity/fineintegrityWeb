@@ -1,0 +1,779 @@
+<!--
+  DIRECTION 1: "FESTIVE BOLD"
+  Rationale: Saffron and deep indigo channel the energy of Indian festival seasons — familiar,
+  warm, and confident without feeling kitsch. The bold display type and generous spacing signal
+  a premium brand, while the amber accents and Devanagari subtitle ground it culturally for
+  Indian SMB owners who associate festive colour with celebration and commerce.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prachar — Festive Bold Direction</title>
+  <style>
+    /* =============================================
+       COLOUR TOKENS — FESTIVE BOLD
+       Primary Saffron:   #F97316
+       Saffron Light:     #FED7AA
+       Saffron Deep:      #EA580C
+       Amber Accent:      #FBBF24
+       Indigo Dark:       #1E1B4B   (primary dark / text)
+       Indigo Mid:        #312E81
+       Indigo Soft:       #4338CA
+       Off-White BG:      #FFF8F1
+       Surface Card:      #FFFFFF
+       Muted Text:        #6B6B8A
+       Border Subtle:     #E8E0F7
+       Success Green:     #16A34A
+       ============================================= */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #EAEAF0; /* canvas grey */
+      color: #1E1B4B;
+    }
+
+    /* ---- DESKTOP STICKY HEADER ---- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #1E1B4B;
+      border-bottom: 2px solid #F97316;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+    }
+
+    .wordmark-latin {
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+    }
+
+    /* Saffron underline accent under the 'a' in Prachar */
+    .wordmark-latin span.accent {
+      display: inline-block;
+      position: relative;
+    }
+    .wordmark-latin span.accent::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #F97316;
+      border-radius: 2px;
+    }
+
+    .wordmark-deva {
+      font-size: 9px;
+      color: #FED7AA;   /* Saffron Light */
+      letter-spacing: 1px;
+      margin-top: 3px;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #FED7AA;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+
+    .nav-lang {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #FED7AA;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .nav-lang svg { width: 16px; height: 16px; fill: none; stroke: #FED7AA; stroke-width: 1.5; }
+
+    .btn-nav-cta {
+      background: #F97316;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      transition: background 0.2s;
+    }
+    .btn-nav-cta:hover { background: #EA580C; }
+
+    /* ---- DESKTOP CANVAS ---- */
+    .canvas {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .canvas-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #6B6B8A;
+      margin-bottom: 16px;
+    }
+
+    /* ---- PHONE FRAME ---- */
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+
+    .phone-frame {
+      width: 375px;
+      background: #FFF8F1;
+      border-radius: 44px;
+      box-shadow: 0 24px 64px rgba(30,27,75,0.22), 0 0 0 8px #1E1B4B, 0 0 0 10px #312E81;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* phone notch */
+    .phone-notch {
+      height: 30px;
+      background: #1E1B4B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-notch-pill {
+      width: 90px;
+      height: 10px;
+      background: #312E81;
+      border-radius: 99px;
+    }
+
+    /* ---- MOBILE NAV ---- */
+    .mobile-nav {
+      background: #1E1B4B;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #F97316;
+    }
+    .mobile-wordmark-latin {
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+      position: relative;
+      display: inline-block;
+    }
+    .mobile-wordmark-deva {
+      font-size: 8px;
+      color: #FED7AA;
+      display: block;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .hamburger {
+      width: 24px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: #FED7AA;
+      border-radius: 2px;
+    }
+    .hamburger span:last-child { width: 65%; }
+
+    /* ---- MOBILE HERO ---- */
+    .mobile-hero {
+      background: linear-gradient(160deg, #1E1B4B 0%, #312E81 60%, #4338CA 100%);
+      padding: 36px 24px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* decorative circles */
+    .mobile-hero::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .mobile-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -20px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(251,191,36,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.4);
+      border-radius: 99px;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #FBBF24;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: #F97316;
+      border-radius: 50%;
+    }
+
+    .hero-h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: #F97316;
+    }
+
+    .hero-sub {
+      font-size: 13.5px;
+      color: #C7C3E8;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      background: #F97316;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.45);
+    }
+
+    .btn-ncr {
+      display: block;
+      text-align: center;
+      font-size: 11px;
+      color: #9CA3C7;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---- WHATSAPP MOCK CARD ---- */
+    .wa-card-wrap {
+      background: #FFF8F1;
+      padding: 20px 20px 8px;
+    }
+
+    .wa-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #6B6B8A;
+      margin-bottom: 12px;
+    }
+
+    .wa-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(30,27,75,0.10);
+      border: 1px solid #E8E0F7;
+    }
+
+    .wa-card-header {
+      background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wa-shop-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .wa-shop-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .wa-shop-sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .wa-card-body {
+      padding: 14px 16px;
+    }
+    .wa-festival-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #F97316;
+      margin-bottom: 6px;
+    }
+    .wa-headline {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1E1B4B;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .wa-body-text {
+      font-size: 12px;
+      color: #4B4B6A;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .wa-offer-pill {
+      display: inline-block;
+      background: #FEF3C7;
+      color: #92400E;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .wa-cta-strip {
+      background: #1E1B4B;
+      margin: 0 -16px -14px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #FBBF24;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---- FEATURE CARD PEEK ---- */
+    .feature-peek {
+      background: #FFF8F1;
+      padding: 16px 20px 24px;
+      border-top: 1px solid #E8E0F7;
+    }
+
+    .feature-peek-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #6B6B8A;
+      margin-bottom: 12px;
+    }
+
+    .feature-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #E8E0F7;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 1px 6px rgba(30,27,75,0.06);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #FED7AA, #F97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .feature-text h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1E1B4B;
+      margin-bottom: 4px;
+    }
+    .feature-text p {
+      font-size: 11.5px;
+      color: #6B6B8A;
+      line-height: 1.5;
+    }
+
+    .scroll-hint {
+      text-align: center;
+      padding: 8px 0 16px;
+      font-size: 18px;
+      opacity: 0.4;
+    }
+
+    /* ---- TRUST BAR ---- */
+    .trust-bar {
+      background: #FFFFFF;
+      border-top: 1px solid #E8E0F7;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trust-dot { width: 6px; height: 6px; background: #16A34A; border-radius: 50%; flex-shrink: 0; }
+    .trust-text { font-size: 10px; color: #6B6B8A; line-height: 1.4; }
+
+    /* ---- DESKTOP SECTION ---- */
+    .desktop-section {
+      background: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(30,27,75,0.10);
+    }
+
+    .desktop-label-bar {
+      background: #1E1B4B;
+      padding: 12px 24px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #FED7AA;
+    }
+
+    .desktop-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+
+    .desktop-hero-left {
+      background: linear-gradient(160deg, #1E1B4B 0%, #312E81 100%);
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .desktop-hero-left::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(249,115,22,0.14) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .desktop-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.35);
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #FBBF24;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    .desktop-h1 {
+      font-size: 44px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .desktop-h1 em {
+      font-style: normal;
+      color: #F97316;
+    }
+
+    .desktop-sub {
+      font-size: 16px;
+      color: #C7C3E8;
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 440px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .desktop-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary-desktop {
+      background: #F97316;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 32px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      box-shadow: 0 6px 24px rgba(249,115,22,0.40);
+    }
+
+    .btn-ncr-desktop {
+      font-size: 12px;
+      color: #9CA3C7;
+    }
+
+    .desktop-trust {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .desktop-trust-dot { width: 7px; height: 7px; background: #16A34A; border-radius: 50%; flex-shrink: 0; }
+    .desktop-trust-text { font-size: 12px; color: #9CA3C7; }
+
+    .desktop-hero-right {
+      background: #FFF8F1;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .desktop-wa-card {
+      width: 340px;
+      background: #FFFFFF;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(30,27,75,0.14);
+      border: 1px solid #E8E0F7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY DESKTOP HEADER -->
+  <header class="site-header">
+    <div class="wordmark">
+      <div class="wordmark-latin">Pr<span class="accent">a</span>char</div>
+      <div class="wordmark-deva">प्रचार</div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+        <li>
+          <span class="nav-lang">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            EN ▾
+          </span>
+        </li>
+      </ul>
+    </nav>
+    <button class="btn-nav-cta">Start Free Trial</button>
+  </header>
+
+  <!-- CANVAS -->
+  <div class="canvas">
+    <div class="canvas-label">Mobile View — 375px (Android Primary)</div>
+
+    <!-- PHONE FRAME -->
+    <div class="phone-wrap">
+      <div class="phone-frame">
+        <!-- Notch -->
+        <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav">
+          <div>
+            <span class="mobile-wordmark-latin">Prachar</span>
+            <span class="mobile-wordmark-deva">प्रचार</span>
+          </div>
+          <div class="hamburger">
+            <span></span><span></span><span></span>
+          </div>
+        </nav>
+
+        <!-- Mobile Hero -->
+        <div class="mobile-hero">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            AI-Powered Campaign Automation
+          </div>
+          <h1 class="hero-h1">Festival campaigns your customers actually <em>open</em> — in 5 minutes.</h1>
+          <p class="hero-sub">AI-generated WhatsApp and email promotions for Indian businesses. No designer. No agency. Just describe your offer.</p>
+          <button class="btn-primary">Start Free Trial</button>
+          <span class="btn-ncr">No Credit Card Required</span>
+        </div>
+
+        <!-- WhatsApp Sample Card -->
+        <div class="wa-card-wrap">
+          <div class="wa-card-label">Sample Prachar-generated Diwali campaign — WhatsApp format</div>
+          <div class="wa-card">
+            <div class="wa-card-header">
+              <div class="wa-shop-icon">🛍️</div>
+              <div>
+                <div class="wa-shop-name">Sharma Garments</div>
+                <div class="wa-shop-sub">Business · Verified</div>
+              </div>
+            </div>
+            <div class="wa-card-body">
+              <div class="wa-festival-tag">✨ Diwali Special Offer</div>
+              <div class="wa-headline">Celebrate Diwali with Upto 40% Off on Ethnic Wear! 🪔</div>
+              <div class="wa-body-text">Namaste! Get festive-ready with our exclusive Diwali collection. Silk sarees, kurtas, and lehengas — handpicked for your celebrations.<br><br>🎁 Extra 5% off on orders above ₹2,000</div>
+              <div class="wa-offer-pill">🏷️ Use code: DIWALI40</div>
+              <div class="wa-cta-strip">👆 Shop Now — Offer ends Oct 31</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="trust-bar">
+          <span class="trust-dot"></span>
+          <span class="trust-text">Trusted by automotive services, garments shops, and grocery businesses</span>
+        </div>
+
+        <!-- Feature peek -->
+        <div class="feature-peek">
+          <div class="feature-peek-label">Why Prachar</div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-text">
+              <h3>Create in 5 Minutes</h3>
+              <p>Describe your offer in plain language. AI handles the copywriting, formatting, and scheduling.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-hint">⌄</div>
+      </div>
+    </div>
+
+    <!-- DESKTOP SECTION -->
+    <div class="canvas-label">Desktop Layout — 1280px</div>
+    <div class="desktop-section">
+      <div class="desktop-label-bar">Desktop Hero — Direction 1: Festive Bold</div>
+      <div class="desktop-hero">
+        <div class="desktop-hero-left">
+          <div class="desktop-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            AI-Powered Campaign Automation
+          </div>
+          <h1 class="desktop-h1">Festival campaigns your customers actually <em>open</em> — in 5 minutes.</h1>
+          <p class="desktop-sub">AI-generated WhatsApp and email promotions for Indian businesses. No designer. No agency. Just describe your offer.</p>
+          <div class="desktop-cta-row">
+            <button class="btn-primary-desktop">Start Free Trial</button>
+            <span class="btn-ncr-desktop">No Credit Card Required</span>
+          </div>
+          <div class="desktop-trust">
+            <span class="desktop-trust-dot"></span>
+            <span class="desktop-trust-text">Trusted by automotive services, garments shops, and grocery businesses</span>
+          </div>
+        </div>
+        <div class="desktop-hero-right">
+          <div class="desktop-wa-card">
+            <div class="wa-card-header">
+              <div class="wa-shop-icon">🛍️</div>
+              <div>
+                <div class="wa-shop-name">Sharma Garments</div>
+                <div class="wa-shop-sub">Business · Verified</div>
+              </div>
+            </div>
+            <div class="wa-card-body">
+              <div class="wa-festival-tag">✨ Diwali Special Offer</div>
+              <div class="wa-headline">Celebrate Diwali with Upto 40% Off on Ethnic Wear! 🪔</div>
+              <div class="wa-body-text">Namaste! Get festive-ready with our exclusive Diwali collection. Silk sarees, kurtas, and lehengas — handpicked for your celebrations.<br><br>🎁 Extra 5% off on orders above ₹2,000</div>
+              <div class="wa-offer-pill">🏷️ Use code: DIWALI40</div>
+              <div class="wa-cta-strip">👆 Shop Now — Offer ends Oct 31</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
